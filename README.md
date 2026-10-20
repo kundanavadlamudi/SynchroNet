@@ -1,38 +1,17 @@
 # NexTrace
 
-## Project Title
-Social Media Coordinated Disinformation Detection System
+NexTrace is a Social Media Coordinated Disinformation Detection System.
 
-## Track
-Social Network Analysis
-
-## Problem Statement
-PS-03
-
-## Objective
-To identify potentially coordinated social media activity by combining
-OSINT, Machine Learning, Natural Language Processing, Graph Analytics,
-Multimedia Analysis, and Threat Intelligence.
-
-## Main Modules
-1. OSINT Data Collection
-2. Data Preprocessing
-3. Account Behaviour Analysis
-4. NLP and Narrative Detection
-5. Coordinated Activity Detection
-6. Social Network Graph Analysis
-7. Multimedia Verification
-8. Geospatial Analysis
-9. Campaign Risk Assessment
-10. Investigation Dashboard
+## Objectives
+- Detect potentially suspicious social media accounts.
+- Identify coordinated posting patterns.
+- Analyze similarities between posts.
+- Build account coordination networks.
+- Display investigation results through a dashboard.
 
 ## Technology Stack
 - Python
-- Pandas
+- Pandas and NumPy
 - Scikit-learn
 - NetworkX
 - Streamlit
-- Plotly
-
-## Current Development Stage
-Project setup and data preparation.
