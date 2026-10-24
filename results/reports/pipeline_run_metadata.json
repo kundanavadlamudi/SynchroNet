@@ -1,9 +1,10 @@
 {
-  "run_timestamp": "2026-10-24T07:22:49.186446+00:00",
-  "completed_at": "2026-10-24T07:22:59.827150+00:00",
-  "duration_seconds": 10.64,
+  "run_timestamp": "2026-10-24T08:45:08.248256+00:00",
+  "completed_at": "2026-10-24T08:45:27.029383+00:00",
+  "duration_seconds": 18.78,
   "source": "demo",
   "is_synthetic": true,
   "posts_file": "C:\\Projects\\SynchroNet\\data\\processed\\sample_social_media_posts.csv",
+  "osint_enriched": true,
   "pipeline_version": "NexTrace-v1.1"
 }

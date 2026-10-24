@@ -72,6 +72,26 @@ def _compute_similarity_tfidf(texts: list[str]) -> np.ndarray:
         return np.zeros((len(texts), len(texts)))
 
 
+def compute_pairwise_text_similarity(text_a: str, text_b: str) -> float:
+    """Compute similarity score (0.0 to 1.0) between two arbitrary strings.
+
+    Handles empty strings, whitespace, and Unicode text safely.
+    """
+    clean_a = str(text_a or "").strip()
+    clean_b = str(text_b or "").strip()
+    if not clean_a or not clean_b:
+        return 0.0
+    if clean_a == clean_b:
+        return 1.0
+
+    texts = [clean_a, clean_b]
+    embeddings = _compute_embeddings_sentence_transformer(texts)
+    if embeddings is not None:
+        return float(np.clip(cosine_similarity(embeddings)[0, 1], 0.0, 1.0))
+    sim_matrix = _compute_similarity_tfidf(texts)
+    return float(np.clip(sim_matrix[0, 1], 0.0, 1.0))
+
+
 def calculate_semantic_similarity(df: pd.DataFrame) -> pd.DataFrame:
     """Calculate pairwise text similarity between social media posts.
 

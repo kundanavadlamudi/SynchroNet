@@ -97,6 +97,85 @@ class CampaignRecord:
         return asdict(self)
 
 
+@dataclass
+class NewsArticleRecord:
+    url: str
+    title: str
+    seen_date: str = ""
+    domain: str = ""
+    language: str = "en"
+    source_country: str = ""
+    query_term: str = ""
+    collection_time: str = field(
+        default_factory=lambda: datetime.now(timezone.utc).isoformat()
+    )
+    provenance: str = "GDELT DOC 2.0"
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class FactCheckRecord:
+    query_term: str
+    claim_text: str
+    claimant: str = ""
+    claim_date: str = ""
+    publisher_name: str = ""
+    publisher_site: str = ""
+    review_url: str = ""
+    review_title: str = ""
+    review_date: str = ""
+    textual_rating: str = ""
+    collection_time: str = field(
+        default_factory=lambda: datetime.now(timezone.utc).isoformat()
+    )
+    provenance: str = "Google Fact Check Tools API"
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class DomainInvestigationRecord:
+    domain: str
+    registrar: str = ""
+    registration_date: str = ""
+    last_changed_date: str = ""
+    status: list[str] = field(default_factory=list)
+    nameservers: list[str] = field(default_factory=list)
+    collection_time: str = field(
+        default_factory=lambda: datetime.now(timezone.utc).isoformat()
+    )
+    provenance: str = "RDAP"
+    evidence_note: str = (
+        "Contextual domain registration data only; does not establish malicious attribution or intent."
+    )
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class OSINTEnrichmentBundle:
+    target_id: str  # post_id or campaign_id
+    target_type: str  # "post" or "campaign"
+    matched_news: list[dict[str, Any]] = field(default_factory=list)
+    matched_fact_checks: list[dict[str, Any]] = field(default_factory=list)
+    domain_investigations: list[dict[str, Any]] = field(default_factory=list)
+    ocr_extracted_text: str = ""
+    enrichment_timestamp: str = field(
+        default_factory=lambda: datetime.now(timezone.utc).isoformat()
+    )
+    limitations: str = (
+        "OSINT evidence provides external context and public reporting; absence of fact-checks does "
+        "not imply truthfulness, and external ratings remain the sole attribution of original publishers."
+    )
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
 def normalize_timestamp(val: Any) -> pd.Timestamp | None:
     """Normalize any date/time string or object to a UTC Timestamp, or None if invalid."""
     if pd.isna(val):

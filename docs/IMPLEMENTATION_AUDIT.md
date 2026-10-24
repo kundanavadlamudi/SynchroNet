@@ -160,23 +160,32 @@ The Streamlit dashboard (`dashboard/app.py`) has 5 tabs:
 
 ---
 
-## 8. Prioritized Next Steps
+## 8. Prioritized Implementation Summary
 
-1. **Stage 2 (Data Contract):** Define unified data contracts (`PostSchema`, `AccountSchema`, `AnalysisResultSchema`, `CampaignSchema`) supporting post data, account profile metadata, and provenance.
-2. **Stage 3 (Ingestion Boundary):** Implement `src/ingestion/` with:
-   - File-based ingest for CSV/JSON (supporting posts and optional account metadata).
-   - Synthetic demo provider (10 posts).
-   - Generic external provider interface with mock-tested adapter for authorized public feeds/APIs.
-   - Clear documentation of credentials, rate limits, and blockers for live social APIs.
-3. **Stage 4 & 5 (End-to-End Analysis Connection & Interpretable Scoring):**
-   - Provide resilient semantic similarity in `src/semantic_similarity.py` (SentenceTransformers with TF-IDF fallback when torch/transformers unavailable).
-   - Connect Phase 1 account features to Phase 2 `predict_account.py` so ingested accounts receive ML bot probabilities alongside coordination risk scores.
-   - Enhance `run_pipeline.py` to orchestrate this unified flow with provenance and run timestamps.
-4. **Stage 6 (Model Validation Script):** Maintain read-only model evaluation tools and document leakage/generalization caveats without touching the `.joblib` artifact.
-5. **Stage 7 (Dashboard Integration):**
-   - Connect dashboard to unified pipeline outputs.
-   - Allow user file upload (CSV/JSON) directly in dashboard or CLI.
-   - Expose bot classification results alongside coordination detection in the dashboard.
-6. **Stage 8 & 9 (Tests & Documentation):**
-   - Expand automated tests for schema validation, CSV/JSON ingest, mock API adapters, and unified pipeline.
-   - Update `README.md`, provide `.env.example`, and document operational procedures.
+All prioritized engineering stages have been completed:
+1. **Unified Data Contracts (`src/contracts.py`):** Canonical schemas for posts, accounts, results, campaigns, news articles, fact-check reviews, domain telemetry, and OSINT bundles.
+2. **Ingestion & Social Providers (`src/ingestion/`):** File provider (CSV/JSON), synthetic provider, generic API adapter, Twitter/X API v2 Recent Search provider with rate-limit backoff, and Reddit Data API provider.
+3. **OSINT Intelligence Providers (`src/osint/`):** GDELT DOC 2.0 API client, Google Fact Check Tools API client, SSRF-defended RDAP domain investigator, Vision OCR text extractor with disclaimers, and OSINTEnricher.
+4. **NLP & Linguistic Robustness (`src/semantic_similarity.py`):** Dual-engine SentenceTransformer with TF-IDF cosine fallback; validated on exact duplicates, astroturfed paraphrases, structural paraphrases, empty strings, and Unicode text.
+5. **Dashboard Completion (`dashboard/app.py`):** 5-tab interface enhanced with OSINT narrative panels, clickable fact-checks and news articles, RDAP domain registration tables, and real-time Live API & OSINT Services drawer.
+6. **Automated Testing (`tests/`):** 67 unit and integration tests across 7 test files, achieving 100% pass rate.
+
+---
+
+## 9. Final Verification & Test Release Status
+
+- **Automated Test Results:** **67 passed in 7.56s** (0 failures, 0 regressions).
+  - `tests/test_backup.py`: 12 passed
+  - `tests/test_ingestion_and_contracts.py`: 15 passed
+  - `tests/test_ml_pipeline.py`: 11 passed
+  - `tests/test_nextrace.py`: 4 passed
+  - `tests/test_nlp_and_similarity.py`: 6 passed
+  - `tests/test_osint_enrichment.py`: 12 passed
+  - `tests/test_social_apis.py`: 7 passed
+- **Model Integrity:** `models/selected_bot_classifier.joblib` (8.9 MB) preserved byte-for-byte.
+- **Pipeline Execution:** `run_pipeline.py` executes all 9 stages + OSINT Narrative & Evidence Enrichment end-to-end.
+- **Deliverables:**
+  - `NexTrace_Engineering_Report.docx` and `docs/NexTrace_Engineering_Continuation_Report.docx`
+  - `.env.example` with credential placeholders
+  - `README.md` complete reference
+

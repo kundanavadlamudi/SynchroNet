@@ -109,3 +109,21 @@ ML_DATASET_FILE: Path = DATA_PROCESSED_DIR / "ml_dataset.csv"
 ML_EVALUATION_SUMMARY_FILE: Path = REPORTS_DIR / "ml_evaluation_summary.json"
 ML_MODEL_COMPARISON_FILE: Path = REPORTS_DIR / "ml_model_comparison.csv"
 ML_EXPLANATIONS_FILE: Path = REPORTS_DIR / "ml_explanations.json"
+
+
+# ---------------------------------------------------------------------------
+# Phase 3 & 4 — OSINT & Social Media API configurations
+# ---------------------------------------------------------------------------
+
+GDELT_BASE_URL: str = "https://api.gdeltproject.org/api/v2/doc/doc"
+GOOGLE_FACT_CHECK_BASE_URL: str = "https://factchecktools.googleapis.com/v1alpha1/claims:search"
+RDAP_BASE_URL: str = "https://rdap.org/domain"
+X_API_RECENT_SEARCH_URL: str = "https://api.twitter.com/2/tweets/search/recent"
+REDDIT_SEARCH_URL: str = "https://www.reddit.com/search.json"
+
+OSINT_ENRICHMENT_FILE: Path = REPORTS_DIR / "osint_enrichment_results.json"
+
+DEFAULT_REQUEST_TIMEOUT: int = 10
+DEFAULT_MAX_RETRIES: int = 3
+DEFAULT_BACKOFF_FACTOR: float = 1.0
+

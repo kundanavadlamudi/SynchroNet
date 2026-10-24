@@ -15,7 +15,9 @@ from src.ingestion.base import (
     RateLimitError,
 )
 from src.ingestion.file_provider import FileDataProvider
+from src.ingestion.reddit_provider import RedditAPIProvider
 from src.ingestion.synthetic_provider import SyntheticDataProvider
+from src.ingestion.x_provider import XAPIProvider
 
 
 def get_data_provider(
@@ -43,10 +45,20 @@ def get_data_provider(
             bearer_token=kwargs.get("bearer_token"),
             source_platform=kwargs.get("source_platform", "generic_api"),
         )
+    elif provider_type in ("x", "twitter", "x_api"):
+        return XAPIProvider(
+            bearer_token=kwargs.get("bearer_token"),
+        )
+    elif provider_type in ("reddit", "reddit_api"):
+        return RedditAPIProvider(
+            client_id=kwargs.get("client_id"),
+            client_secret=kwargs.get("client_secret"),
+            user_agent=kwargs.get("user_agent"),
+        )
     else:
         raise ValueError(
             f"Unknown provider type '{provider_type}'. "
-            "Supported types: 'synthetic', 'file', 'api'"
+            "Supported types: 'synthetic', 'file', 'api', 'x', 'reddit'"
         )
 
 
@@ -57,6 +69,8 @@ __all__ = [
     "GenericAPIProvider",
     "IngestionError",
     "RateLimitError",
+    "RedditAPIProvider",
     "SyntheticDataProvider",
+    "XAPIProvider",
     "get_data_provider",
 ]

@@ -73,6 +73,7 @@ _PHASE1_OUTPUTS = [
 _EXTENDED_OUTPUTS = [
     "results/reports/account_classification_results.csv",
     "results/reports/pipeline_run_metadata.json",
+    "results/reports/osint_enrichment_results.json",
 ]
 
 
@@ -139,6 +140,8 @@ def run_pipeline(
     source: str = "demo",
     posts_path: str | None = None,
     accounts_path: str | None = None,
+    query: str = "disinformation",
+    enrich_osint: bool = True,
     dry_run: bool = False,
 ) -> int:
     """Run all Phase 1 and inference steps in order. Returns 0 on success, 1 on failure."""
@@ -150,6 +153,8 @@ def run_pipeline(
     print("=" * 60)
     print(f"Run started at: {run_timestamp}")
     print(f"Data source   : {source}")
+    if source in ("x", "reddit"):
+        print(f"Search query  : {query}")
     print("=" * 60)
 
     # ------------------------------------------------------------------
@@ -176,6 +181,22 @@ def run_pipeline(
             provider = get_data_provider("api")
             posts_df, meta = provider.fetch_posts()
             print(f"Fetched {len(posts_df)} posts from API")
+            if not dry_run:
+                posts_df.to_csv(SAMPLE_POSTS_FILE, index=False)
+        elif source in ("x", "twitter"):
+            provider = get_data_provider("x")
+            status = provider.check_status()
+            if status.get("status") == "BLOCKED_MISSING_CREDENTIALS":
+                print(f"[BLOCKED] {status.get('message')}")
+                raise IngestionError(status.get("message"))
+            posts_df, accounts_df = provider.ingest(query=query, max_results=20)
+            print(f"Fetched {len(posts_df)} posts and {len(accounts_df)} accounts from X API")
+            if not dry_run:
+                posts_df.to_csv(SAMPLE_POSTS_FILE, index=False)
+        elif source in ("reddit", "reddit_api"):
+            provider = get_data_provider("reddit")
+            posts_df, accounts_df = provider.ingest(query=query, limit=25)
+            print(f"Fetched {len(posts_df)} posts and {len(accounts_df)} accounts from Reddit API")
             if not dry_run:
                 posts_df.to_csv(SAMPLE_POSTS_FILE, index=False)
         else:
@@ -273,6 +294,22 @@ def run_pipeline(
         return 1
 
     # ------------------------------------------------------------------
+    # Extended Step — OSINT narrative & evidence enrichment
+    # ------------------------------------------------------------------
+    if enrich_osint:
+        def _enrich_osint_step():
+            import pandas as pd
+            from src.config import CAMPAIGN_RESULTS_FILE, CLEANED_POSTS_FILE, OSINT_ENRICHMENT_FILE
+            from src.osint import OSINTEnricher
+
+            posts_df = pd.read_csv(CLEANED_POSTS_FILE) if CLEANED_POSTS_FILE.exists() else pd.DataFrame()
+            camps_df = pd.read_csv(CAMPAIGN_RESULTS_FILE) if CAMPAIGN_RESULTS_FILE.exists() else pd.DataFrame()
+            enricher = OSINTEnricher()
+            enricher.enrich_dataset(posts_df, camps_df, save_path=OSINT_ENRICHMENT_FILE)
+
+        _run_step("OSINT Narrative & Evidence Enrichment", _enrich_osint_step)
+
+    # ------------------------------------------------------------------
     # Write Pipeline Run Metadata
     # ------------------------------------------------------------------
     total_elapsed = time.perf_counter() - total_start
@@ -287,6 +324,7 @@ def run_pipeline(
                 "source": source,
                 "is_synthetic": source == "demo",
                 "posts_file": posts_path or str(SAMPLE_POSTS_FILE),
+                "osint_enriched": enrich_osint,
                 "pipeline_version": "NexTrace-v1.1",
             },
             indent=2,
@@ -307,6 +345,7 @@ def run_pipeline(
         CAMPAIGN_RESULTS_FILE,
         COORDINATION_GRAPH_PNG,
         RISK_RESULTS_FILE,
+        OSINT_ENRICHMENT_FILE,
     )
     output_files = [
         ("Cleaned posts",         CLEANED_POSTS_FILE),
@@ -317,6 +356,7 @@ def run_pipeline(
         ("Campaign results",      CAMPAIGN_RESULTS_FILE),
         ("Coordination graph",    COORDINATION_GRAPH_PNG),
         ("Risk scores",           RISK_RESULTS_FILE),
+        ("OSINT enrichment",      OSINT_ENRICHMENT_FILE),
         ("Run metadata",          metadata_file),
     ]
     for label, path in output_files:
@@ -339,9 +379,21 @@ def _parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--source",
-        choices=["demo", "file", "api"],
+        choices=["demo", "file", "api", "x", "reddit"],
         default="demo",
-        help="Data source mode: 'demo' (default), 'file', or 'api'.",
+        help="Data source mode: 'demo' (default), 'file', 'api', 'x', or 'reddit'.",
+    )
+    parser.add_argument(
+        "--query",
+        type=str,
+        default="disinformation",
+        help="Search query when fetching from live API sources (X or Reddit).",
+    )
+    parser.add_argument(
+        "--no-osint",
+        action="store_true",
+        default=False,
+        help="Disable OSINT narrative and evidence enrichment step.",
     )
     parser.add_argument(
         "--posts",
@@ -392,6 +444,8 @@ if __name__ == "__main__":
             source=args.source,
             posts_path=args.posts,
             accounts_path=args.accounts,
+            query=args.query,
+            enrich_osint=not args.no_osint,
             dry_run=args.dry_run,
         )
     )

@@ -49,6 +49,7 @@ from src.config import (
     SELECTED_MODEL_FILE,
     SEMANTIC_THRESHOLD,
     TIME_WINDOW_MINUTES,
+    OSINT_ENRICHMENT_FILE,
 )
 
 # ---------------------------------------------------------------------------
@@ -1527,15 +1528,39 @@ with st.sidebar:
                 except Exception as up_err:
                     st.error(f"Upload error: {up_err}")
 
-    with st.expander("Live API / Feed Provider", expanded=False):
-        from src.ingestion import get_data_provider
-        api_prov = get_data_provider("api")
-        api_stat = api_prov.check_status()
-        if api_stat.get("configured"):
-            st.success(f"Configured: {api_stat.get('endpoint')}")
-        else:
-            st.info(api_stat.get("message", "API provider unconfigured."))
-            st.caption("Provide NEXTRACE_API_BASE_URL and NEXTRACE_API_BEARER_TOKEN in .env.")
+    with st.expander("Live API & OSINT Services", expanded=False):
+        from src.ingestion.reddit_provider import RedditAPIProvider
+        from src.ingestion.x_provider import XAPIProvider
+        from src.osint import GDELTClient, GoogleFactCheckClient, RDAPClient, VisionOCRClient
+
+        st.markdown("**Social Media Providers**")
+        x_stat = XAPIProvider().check_status()
+        x_badge = "🟢 OPERATIONAL" if x_stat.get("status") == "OPERATIONAL" else f"⚪ {x_stat.get('status')}"
+        st.markdown(f"- **X API v2**: `{x_badge}`")
+        if not x_stat.get("configured"):
+            st.caption("Set X_BEARER_TOKEN in .env to enable live X ingestion.")
+
+        red_stat = RedditAPIProvider().check_status()
+        red_badge = "🟢 OPERATIONAL" if red_stat.get("status") == "OPERATIONAL" else f"🟡 {red_stat.get('status')}"
+        st.markdown(f"- **Reddit API**: `{red_badge}`")
+
+        st.markdown("**OSINT & Verification Services**")
+        gdelt_stat = GDELTClient().check_status()
+        gd_badge = "🟢 OPERATIONAL" if gdelt_stat.get("status") == "OPERATIONAL" else f"⚪ {gdelt_stat.get('status')}"
+        st.markdown(f"- **GDELT DOC 2.0**: `{gd_badge}`")
+
+        fc_stat = GoogleFactCheckClient().check_status()
+        fc_badge = "🟢 OPERATIONAL" if fc_stat.get("status") == "OPERATIONAL" else f"⚪ {fc_stat.get('status')}"
+        st.markdown(f"- **Google Fact Check**: `{fc_badge}`")
+        if not fc_stat.get("configured"):
+            st.caption("Set GOOGLE_FACT_CHECK_API_KEY in .env for claim verification.")
+
+        rdap_stat = RDAPClient().check_status()
+        rd_badge = "🟢 OPERATIONAL" if rdap_stat.get("status") == "OPERATIONAL" else f"⚪ {rdap_stat.get('status')}"
+        st.markdown(f"- **RDAP Resolver**: `{rd_badge}`")
+
+        ocr_stat = VisionOCRClient().check_status()
+        st.markdown(f"- **Vision OCR**: `{ocr_stat.get('status')}` ({ocr_stat.get('engine')})")
 
     st.markdown('<div class="nx-divider"></div>', unsafe_allow_html=True)
     st.markdown(
@@ -2715,6 +2740,85 @@ with tab_campaign:
                 file_name="nextrace_campaigns_filtered.csv",
                 mime="text/csv",
                 width="content",
+            )
+
+        # -------------------------------------------------------------------
+        # OSINT Narrative & Evidence Intelligence Section
+        # -------------------------------------------------------------------
+        st.markdown('<div class="nx-divider"></div>', unsafe_allow_html=True)
+        _section_header(
+            "OSINT & Narrative Intelligence",
+            "Open-source context: GDELT global news, Google Fact Check claim reviews, and RDAP domain telemetry",
+        )
+        _osint_data, _osint_err = _load_json(str(OSINT_ENRICHMENT_FILE))
+        if isinstance(_osint_data, dict):
+            _enriched_camps = _osint_data.get("enriched_campaigns", [])
+            if _enriched_camps:
+                for _c_idx, _c_bundle in enumerate(_enriched_camps, 1):
+                    _cid = _c_bundle.get("target_id", f"Campaign {_c_idx}")
+                    with st.expander(f"OSINT Evidence & External Attribution for {_cid}", expanded=True):
+                        _oc1, _oc2 = st.columns(2, gap="medium")
+                        with _oc1:
+                            st.markdown("##### 📰 GDELT Global News Coverage")
+                            _news = _c_bundle.get("matched_news", [])
+                            if _news:
+                                for _n in _news[:5]:
+                                    _n_title = html.escape(_n.get("title", "Untitled"))
+                                    _n_url = html.escape(_n.get("url", "#"))
+                                    _n_dom = html.escape(_n.get("domain", "unknown"))
+                                    _n_date = _n.get("seen_date", "")[:10]
+                                    st.markdown(
+                                        f"- <a href='{_n_url}' target='_blank' style='color:#22d3ee;font-weight:600'>"
+                                        f"{_n_title}</a> <span style='color:#94a3b8;font-size:0.8rem'>({_n_dom} · {_n_date})</span>",
+                                        unsafe_allow_html=True,
+                                    )
+                            else:
+                                st.caption("No matching global news articles found for campaign query keywords.")
+
+                        with _oc2:
+                            st.markdown("##### 🛡️ Third-Party Fact Checks")
+                            _fc = _c_bundle.get("matched_fact_checks", [])
+                            if _fc:
+                                for _f in _fc[:5]:
+                                    _f_claim = html.escape(_f.get("claim_text", ""))
+                                    _f_pub = html.escape(_f.get("publisher_name", "Fact Checker"))
+                                    _f_rating = html.escape(_f.get("textual_rating", "Reviewed"))
+                                    _f_url = html.escape(_f.get("review_url", "#"))
+                                    st.markdown(
+                                        f"<div style='background:rgba(30,41,59,0.7);padding:8px;border-radius:6px;margin-bottom:6px;border-left:3px solid #fbbf24'>"
+                                        f"<div style='font-size:0.82rem;color:#e2e8f0'><strong>Claim:</strong> {_f_claim}</div>"
+                                        f"<div style='font-size:0.75rem;color:#94a3b8;margin-top:4px'>"
+                                        f"Rating: <strong style='color:#fbbf24'>{_f_rating}</strong> by {_f_pub} · "
+                                        f"<a href='{_f_url}' target='_blank' style='color:#22d3ee'>Read Review ↗</a>"
+                                        f"</div></div>",
+                                        unsafe_allow_html=True,
+                                    )
+                            else:
+                                st.caption("No published fact checks found for campaign narrative phrases.")
+
+                        # Domains
+                        _domains = _c_bundle.get("domain_investigations", [])
+                        if _domains:
+                            st.markdown("##### 🌐 RDAP Domain Infrastructure Intelligence")
+                            _dom_rows = []
+                            for _d in _domains:
+                                _dom_rows.append({
+                                    "Domain": _d.get("domain"),
+                                    "Registrar": _d.get("registrar") or "Unknown / Redacted",
+                                    "Registered": _d.get("registration_date")[:10] if _d.get("registration_date") else "Unknown",
+                                    "Status": ", ".join(_d.get("status", []))[:30] if _d.get("status") else "Active",
+                                })
+                            st.dataframe(pd.DataFrame(_dom_rows), hide_index=True, use_container_width=True)
+
+                        st.caption(
+                            "Critical Interpretation Note: Absence of a fact-check does NOT indicate a claim is verified or true. "
+                            "Third-party publisher ratings belong exclusively to the source fact-checker and are not NexTrace conclusions."
+                        )
+            else:
+                st.info("No campaign-level OSINT bundles recorded in current pipeline run.")
+        else:
+            st.info(
+                "OSINT enrichment results file not found. Re-run `python run_pipeline.py` to generate OSINT intelligence."
             )
 
 # ===========================================================================

@@ -1,0 +1,98 @@
+{
+  "enriched_posts": [
+    {
+      "target_id": "P001",
+      "target_type": "post",
+      "matched_news": [],
+      "matched_fact_checks": [],
+      "domain_investigations": [],
+      "ocr_extracted_text": "",
+      "enrichment_timestamp": "2026-10-24T08:45:21.594180+00:00",
+      "limitations": "OSINT evidence provides external context and public reporting; absence of fact-checks does not imply truthfulness, and external ratings remain the sole attribution of original publishers."
+    },
+    {
+      "target_id": "P002",
+      "target_type": "post",
+      "matched_news": [],
+      "matched_fact_checks": [],
+      "domain_investigations": [],
+      "ocr_extracted_text": "",
+      "enrichment_timestamp": "2026-10-24T08:45:22.494663+00:00",
+      "limitations": "OSINT evidence provides external context and public reporting; absence of fact-checks does not imply truthfulness, and external ratings remain the sole attribution of original publishers."
+    },
+    {
+      "target_id": "P003",
+      "target_type": "post",
+      "matched_news": [],
+      "matched_fact_checks": [],
+      "domain_investigations": [],
+      "ocr_extracted_text": "",
+      "enrichment_timestamp": "2026-10-24T08:45:23.421584+00:00",
+      "limitations": "OSINT evidence provides external context and public reporting; absence of fact-checks does not imply truthfulness, and external ratings remain the sole attribution of original publishers."
+    },
+    {
+      "target_id": "P004",
+      "target_type": "post",
+      "matched_news": [],
+      "matched_fact_checks": [],
+      "domain_investigations": [],
+      "ocr_extracted_text": "",
+      "enrichment_timestamp": "2026-10-24T08:45:24.298494+00:00",
+      "limitations": "OSINT evidence provides external context and public reporting; absence of fact-checks does not imply truthfulness, and external ratings remain the sole attribution of original publishers."
+    },
+    {
+      "target_id": "P005",
+      "target_type": "post",
+      "matched_news": [],
+      "matched_fact_checks": [],
+      "domain_investigations": [],
+      "ocr_extracted_text": "",
+      "enrichment_timestamp": "2026-10-24T08:45:25.146763+00:00",
+      "limitations": "OSINT evidence provides external context and public reporting; absence of fact-checks does not imply truthfulness, and external ratings remain the sole attribution of original publishers."
+    }
+  ],
+  "enriched_campaigns": [
+    {
+      "target_id": "CAMP_001",
+      "target_type": "campaign",
+      "matched_news": [],
+      "matched_fact_checks": [],
+      "domain_investigations": [],
+      "ocr_extracted_text": "",
+      "enrichment_timestamp": "2026-10-24T08:45:26.053013+00:00",
+      "limitations": "OSINT evidence provides external context and public reporting; absence of fact-checks does not imply truthfulness, and external ratings remain the sole attribution of original publishers."
+    }
+  ],
+  "provider_statuses": {
+    "gdelt": {
+      "service": "GDELT DOC 2.0 API",
+      "status": "UNREACHABLE",
+      "requires_auth": false,
+      "endpoint": "https://api.gdeltproject.org/api/v2/doc/doc",
+      "configured": true,
+      "error": "('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))"
+    },
+    "fact_check": {
+      "service": "Google Fact Check Tools API",
+      "status": "BLOCKED_MISSING_API_KEY",
+      "configured": false,
+      "message": "No Google Fact Check API key configured. Set GOOGLE_FACT_CHECK_API_KEY in your environment or .env file."
+    },
+    "rdap": {
+      "service": "RDAP Domain Resolver",
+      "status": "HTTP_403",
+      "configured": true,
+      "endpoint": "https://rdap.org/domain"
+    },
+    "ocr": {
+      "service": "Vision OCR Extractor",
+      "status": "FALLBACK_MODE",
+      "configured": true,
+      "engine": "heuristic_fallback",
+      "disclaimer": "OCR text extraction converts image contents into textual tokens for indexing; it does NOT demonstrate visual forgery, image manipulation, or malicious attribution."
+    }
+  },
+  "generated_at": "2026-10-24T08:45:27.026871+00:00",
+  "version": "1.1.0",
+  "methodology_disclaimer": "OSINT enrichment aggregates external news, third-party claim reviews, and domain registries. These sources provide context and do not represent internal model predictions or legal attributions."
+}
