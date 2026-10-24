@@ -122,6 +122,7 @@ X_API_RECENT_SEARCH_URL: str = "https://api.twitter.com/2/tweets/search/recent"
 REDDIT_SEARCH_URL: str = "https://www.reddit.com/search.json"
 
 OSINT_ENRICHMENT_FILE: Path = REPORTS_DIR / "osint_enrichment_results.json"
+MANUAL_OSINT_FILE: Path = REPORTS_DIR / "manual_osint_evidence.json"
 
 DEFAULT_REQUEST_TIMEOUT: int = 10
 DEFAULT_MAX_RETRIES: int = 3

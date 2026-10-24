@@ -176,6 +176,24 @@ class OSINTEnrichmentBundle:
         return asdict(self)
 
 
+@dataclass
+class ManualOSINTEvidenceRecord:
+    query_claim: str
+    source_url: str
+    source_title: str
+    publication_date: str = ""
+    collection_time: str = field(
+        default_factory=lambda: datetime.now(timezone.utc).isoformat()
+    )
+    relevant_notes: str = ""
+    target_id: str = ""  # associated post_id or campaign_id
+    target_type: str = "campaign"  # "campaign" or "post"
+    provenance: str = "Manual Analyst Investigation"
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
 def normalize_timestamp(val: Any) -> pd.Timestamp | None:
     """Normalize any date/time string or object to a UTC Timestamp, or None if invalid."""
     if pd.isna(val):

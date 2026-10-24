@@ -50,6 +50,7 @@ from src.config import (
     SEMANTIC_THRESHOLD,
     TIME_WINDOW_MINUTES,
     OSINT_ENRICHMENT_FILE,
+    MANUAL_OSINT_FILE,
 )
 
 # ---------------------------------------------------------------------------
@@ -2878,6 +2879,82 @@ with tab_campaign:
             st.info(
                 "OSINT enrichment results file not found. Re-run `python run_pipeline.py` to generate OSINT intelligence."
             )
+
+        # -------------------------------------------------------------------
+        # Manual OSINT Evidence Recording (Analyst Workspace - No APIs Required)
+        # -------------------------------------------------------------------
+        st.markdown('<div class="nx-divider"></div>', unsafe_allow_html=True)
+        _section_header(
+            "Manual OSINT Investigation & Evidence Recording",
+            "Analyst workflow without APIs: Research claims on public sources and record verifiable evidence.",
+        )
+
+        _manual_records = []
+        if MANUAL_OSINT_FILE.exists():
+            try:
+                with open(MANUAL_OSINT_FILE, "r", encoding="utf-8") as _mf:
+                    _manual_records = json.load(_mf)
+                if not isinstance(_manual_records, list):
+                    _manual_records = []
+            except Exception:
+                _manual_records = []
+
+        with st.expander("📝 Record New Manual OSINT Evidence", expanded=False):
+            with st.form("manual_osint_form", clear_on_submit=True):
+                _m_c1, _m_c2 = st.columns(2, gap="medium")
+                with _m_c1:
+                    _m_claim = st.text_input("Investigated Keyword or Claim*", placeholder="e.g. 5G towers cause radiation poisoning")
+                    _m_title = st.text_input("Source Article / Fact-Check Title*", placeholder="e.g. Fact Check: False claims about 5G")
+                    _m_url = st.text_input("Source URL*", placeholder="https://www.reuters.com/fact-check/...")
+                with _m_c2:
+                    _m_pub_date = st.text_input("Publication Date", placeholder="e.g. 2024-03-15")
+                    _target_options = ["None"]
+                    if not _camp_df.empty and "campaign_id" in _camp_df.columns:
+                        _target_options += [f"Campaign: {cid}" for cid in _camp_df["campaign_id"].dropna().unique()]
+                    if not _posts_df.empty and "post_id" in _posts_df.columns:
+                        _target_options += [f"Post: {pid}" for pid in _posts_df["post_id"].dropna().unique()[:20]]
+                    _m_assoc = st.selectbox("Associate Evidence with Target", options=_target_options)
+                    _m_notes = st.text_area("Analyst Investigation Notes", placeholder="e.g. Originates from known disinfo cluster; debunked by IFCN signatory.", height=80)
+
+                _submitted = st.form_submit_button("Save Manual Evidence", use_container_width=True)
+                if _submitted:
+                    if not _m_claim.strip() or not _m_url.strip() or not _m_title.strip():
+                        st.error("Please provide at least the Claim, Source URL, and Source Title.")
+                    else:
+                        _new_rec = {
+                            "query_claim": _m_claim.strip(),
+                            "source_title": _m_title.strip(),
+                            "source_url": _m_url.strip(),
+                            "publication_date": _m_pub_date.strip(),
+                            "collection_time": datetime.now(timezone.utc).isoformat(),
+                            "relevant_notes": _m_notes.strip(),
+                            "associated_target": _m_assoc,
+                            "provenance": "Manual Analyst Investigation"
+                        }
+                        _manual_records.append(_new_rec)
+                        MANUAL_OSINT_FILE.parent.mkdir(parents=True, exist_ok=True)
+                        with open(MANUAL_OSINT_FILE, "w", encoding="utf-8") as _mf:
+                            json.dump(_manual_records, _mf, indent=2)
+                        st.success("Manual OSINT evidence saved successfully!")
+                        st.rerun()
+
+        if _manual_records:
+            st.markdown(f"**Recorded Manual Evidence ({len(_manual_records)} records)**")
+            _m_rows = []
+            for _rec in reversed(_manual_records):
+                _m_rows.append({
+                    "Target": _rec.get("associated_target", "None"),
+                    "Claim / Keyword": _rec.get("query_claim", ""),
+                    "Source Title": _rec.get("source_title", ""),
+                    "Source URL": _rec.get("source_url", ""),
+                    "Pub Date": _rec.get("publication_date", ""),
+                    "Collected (UTC)": _rec.get("collection_time", "")[:19].replace("T", " "),
+                    "Analyst Notes": _rec.get("relevant_notes", ""),
+                })
+            st.dataframe(pd.DataFrame(_m_rows), hide_index=True, use_container_width=True)
+        else:
+            st.caption("No manual OSINT evidence recorded yet. Use the form above to record verifiable public evidence.")
+
 
 # ===========================================================================
 # TAB 5 — BOT CLASSIFIER
