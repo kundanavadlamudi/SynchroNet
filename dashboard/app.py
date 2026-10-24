@@ -2236,8 +2236,7 @@ with tab_coord:
                         st.image(
                             str(COORDINATION_GRAPH_PNG),
                             caption="Pipeline-generated network (Matplotlib, 300 dpi)",
-                            width="stretch",
-                            alt="Coordination network of accounts linked by flagged pairs",
+                            use_container_width=True,
                         )
                     else:
                         st.caption(
