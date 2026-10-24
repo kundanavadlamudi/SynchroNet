@@ -1528,6 +1528,48 @@ with st.sidebar:
                 except Exception as up_err:
                     st.error(f"Upload error: {up_err}")
 
+    with st.expander("Manual Post Input", expanded=False):
+        m_account = st.text_input("Account ID / Handle", value="analyst_test", key="man_acc")
+        m_text = st.text_area("Post Text", placeholder="Paste social media post text here...", key="man_text")
+        m_url = st.text_input("Shared URL (optional)", placeholder="https://example.com/claim", key="man_url")
+        if st.button("Analyze Manual Post", type="primary", key="btn_man_post"):
+            if not m_text.strip():
+                st.warning("Please enter post text to analyze.")
+            else:
+                try:
+                    from datetime import datetime, timezone
+                    import pandas as pd
+                    from src.contracts import validate_and_normalize_posts
+                    from src.config import SAMPLE_POSTS_FILE
+                    from run_pipeline import run_pipeline
+
+                    new_row = {
+                        "post_id": f"MANUAL_{int(datetime.now(timezone.utc).timestamp())}",
+                        "account_id": m_account.strip() or "anonymous",
+                        "text": m_text.strip(),
+                        "timestamp": datetime.now(timezone.utc).isoformat(),
+                        "url": m_url.strip(),
+                        "source_platform": "manual_entry",
+                        "provenance": "analyst_input",
+                    }
+                    # Append to existing sample posts if exists
+                    if SAMPLE_POSTS_FILE.exists():
+                        existing_df = pd.read_csv(SAMPLE_POSTS_FILE)
+                        combined_df = pd.concat([existing_df, pd.DataFrame([new_row])], ignore_index=True)
+                    else:
+                        combined_df = pd.DataFrame([new_row])
+
+                    cleaned_df, _ = validate_and_normalize_posts(
+                        combined_df, default_source="manual_entry", default_provenance="analyst_input"
+                    )
+                    cleaned_df.to_csv(SAMPLE_POSTS_FILE, index=False)
+                    run_pipeline(source="file", posts_path=str(SAMPLE_POSTS_FILE), skip_sample_data=False)
+                    st.cache_data.clear()
+                    st.success("Post analyzed and pipeline executed! Reloading...")
+                    st.rerun()
+                except Exception as man_err:
+                    st.error(f"Error analyzing post: {man_err}")
+
     with st.expander("Live API & OSINT Services", expanded=False):
         from src.ingestion.reddit_provider import RedditAPIProvider
         from src.ingestion.x_provider import XAPIProvider
@@ -1561,6 +1603,23 @@ with st.sidebar:
 
         ocr_stat = VisionOCRClient().check_status()
         st.markdown(f"- **Vision OCR**: `{ocr_stat.get('status')}` ({ocr_stat.get('engine')})")
+
+        st.markdown('<div class="nx-divider"></div>', unsafe_allow_html=True)
+        st.markdown("**Execute Live API Search**")
+        live_src = st.selectbox("API Source", options=["x", "reddit"], format_func=lambda s: "Twitter / X API v2" if s == "x" else "Reddit Data API")
+        live_query = st.text_input("Search Keyword / Query", value="disinformation", key="live_api_query_input")
+        if st.button("Fetch & Analyze from API", key="btn_run_live_api"):
+            try:
+                from run_pipeline import run_pipeline
+                ret = run_pipeline(source=live_src, query=live_query, skip_sample_data=False)
+                if ret == 0:
+                    st.cache_data.clear()
+                    st.success(f"Successfully ingested live records from {live_src}! Reloading...")
+                    st.rerun()
+                else:
+                    st.error(f"Live API ingestion from {live_src} failed or was blocked. Check credentials in .env.")
+            except Exception as api_err:
+                st.error(f"Live API Error: {api_err}")
 
     st.markdown('<div class="nx-divider"></div>', unsafe_allow_html=True)
     st.markdown(
