@@ -1,0 +1,2541 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d6" for="edge" attr.name="evidence_signals" attr.type="long" />
+  <key id="d5" for="edge" attr.name="semantic_similarity" attr.type="double" />
+  <key id="d4" for="edge" attr.name="coordination_score" attr.type="double" />
+  <key id="d3" for="node" attr.name="flagged_pair_count" attr.type="long" />
+  <key id="d2" for="node" attr.name="total_posts" attr.type="long" />
+  <key id="d1" for="node" attr.name="source_label" attr.type="string" />
+  <key id="d0" for="node" attr.name="source_group" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="290499654">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">10</data>
+    </node>
+    <node id="349392750">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">10</data>
+    </node>
+    <node id="475732319">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">10</data>
+    </node>
+    <node id="38520305">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">4</data>
+    </node>
+    <node id="72110028">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">4</data>
+    </node>
+    <node id="82885728">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">4</data>
+    </node>
+    <node id="35008954">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">2</data>
+    </node>
+    <node id="157882115">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">1</data>
+    </node>
+    <node id="157882740">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">1</data>
+    </node>
+    <node id="164560495">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">1</data>
+    </node>
+    <node id="166142862">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">1</data>
+    </node>
+    <node id="39321660">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">1</data>
+    </node>
+    <node id="50660716">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">7</data>
+      <data key="d3">1</data>
+    </node>
+    <node id="101882667">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="10492262">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="10788822">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="108992875">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="10935572">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="109905756">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="110120789">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="11176152">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1120176186">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124249136">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124264132">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124293891">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124295318">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124301420">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124314592">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124348202">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124360551">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124407771">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124447899">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124453858">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124459342">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124512352">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124542038">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124550980">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124613985">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124616192">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124632188">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124643068">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124711090">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124739583">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124770110">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124788411">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1124807293">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1125327924">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1125357410">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1125395220">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1125604190">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1125863318">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1125890246">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1125962952">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1125979442">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1126034406">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1126057680">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1126097768">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1126130328">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1126192496">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1126249350">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1126399904">
+      <data key="d0">FSF</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="11990112">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="12179872">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="12551742">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="12700622">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="12765892">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="129549447">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="13260592">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="133834939">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1382561">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1395978913">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="13972932">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="14057516">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="14112759">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="142299179">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="14321616">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="143894405">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="14443340">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="14474989">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="14492555">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="14561441">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="14596967">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="14709812">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="148022818">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="148061189">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1480973431">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="14826060">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="148404674">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="14865840">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="14867242">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="149038171">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="149245813">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="14938781">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="149421076">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="149512577">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="14958182">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="149587895">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="149723283">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="15016610">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="150183040">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="15271419">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="15350901">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="15391421">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="15453624">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="15455450">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="15528595">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="15530118">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="15622858">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="15788159">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="157883888">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="157884271">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="157884661">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="157899229">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="157899996">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="15836275">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="15873303">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="15922136">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="159797667">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="16002194">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="16043064">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="16093829">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="16119337">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="161256906">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="161610564">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="161611407">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="16195340">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="162035733">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="162167191">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="162341083">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="162390942">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="162395011">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="16282004">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="162985186">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="164250795">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="164269433">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="164303126">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="165778169">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="165785902">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="165790334">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="16591972">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1664238487">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1664307984">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="16671189">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1668189836">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1669189561">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="16733141">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="16740486">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="16753788">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="16927266">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="17132768">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="17640121">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="17654864">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="17656600">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="177671726">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="17976561">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="18013384">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="1813221">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="19121759">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="19230427">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="19435878">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="19581787">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="195913271">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="19951698">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2007021">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="20338242">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="20531552">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="20731719">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="21196037">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="21331733">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="21375100">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="21577213">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="21706899">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">1</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212482667">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212530487">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212593386">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212600722">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212619130">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212792506">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212794786">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212804586">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212809398">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212841905">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212872006">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212877216">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212897620">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212898329">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212943724">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212951627">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212974870">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212988167">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2212997582">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2213004120">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2213012017">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2213026430">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2213054796">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2213069468">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2213075978">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2213089166">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="22316443">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="223945761">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="22597402">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="22903">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="229579492">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="22979959">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="23088369">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="237177357">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="237178034">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="237192061">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="237192993">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="237197647">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="237201814">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="237226175">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="237234251">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="237326341">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="237332572">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="237346330">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="237359828">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="237367607">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="237375183">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="23832142">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="240706202">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="24320335">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="24503">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="24858289">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="252647855">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="25836383">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="260649579">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="26117307">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="26364491">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="26743316">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="26778002">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="26912227">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="27159435">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="27164845">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2731681">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="27662686">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="2770511">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="279715787">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="28219482">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="282659109">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="28587018">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="286543">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="28843786">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">7</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="29370531">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="29444347">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="29742631">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="29822733">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="29922606">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="29940598">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="299988118">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="303932719">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="30428221">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="30998590">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="31228692">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="31708548">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="31776715">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="32179000">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="327060670">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="33212890">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="33438880">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">7</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="33608758">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="336996257">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="33869550">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">2</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="34255057">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="34461690">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">1</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="34589722">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">1</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="34762630">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="35401956">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="35531101">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">1</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="357536147">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="35959749">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="3610511">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="36299291">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="36477176">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="36878978">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="36943266">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="370098498">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="37192548">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="37384589">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="38021637">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">1</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="38195080">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="382393">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="38344324">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">4</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="3873101">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="3888491">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="3909541">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="39328305">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="393927847">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="39773427">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="40010436">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="4121091">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="41613571">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="418371090">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="418501358">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="421987528">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="42570158">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="430928749">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="43133380">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="434722849">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="434727810">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="434728619">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="434729769">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="434732328">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="438023">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="44091292">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="45107336">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="46071929">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="46553408">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">4</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="47497854">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">1</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="47722321">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">9</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="478016217">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="479908486">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="480104212">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="480748987">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="481505805">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="481913106">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="481994964">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="482179475">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="482517693">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="48336195">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">1</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="48364513">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="48638750">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="50055682">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="50342870">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">1</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="50449844">
+      <data key="d0">TWT</data>
+      <data key="d1">bot</data>
+      <data key="d2">10</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="51184465">
+      <data key="d0">fake_followers</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="518341782">
+      <data key="d0">social_spambots_2</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="52346698">
+      <data key="d0">fake_followers</data>
+      <data key="d1">bot</data>
+      <data key="d2">4</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="54047372">
+      <data key="d0">fake_followers</data>
+      <data key="d1">bot</data>
+      <data key="d2">1</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="54244742">
+      <data key="d0">fake_followers</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="5445622">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="55197144">
+      <data key="d0">fake_followers</data>
+      <data key="d1">bot</data>
+      <data key="d2">1</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="55398486">
+      <data key="d0">fake_followers</data>
+      <data key="d1">bot</data>
+      <data key="d2">1</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="5656162">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="5682702">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="57007623">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="5812422">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="5820222">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="5856182">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="586003">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="5863152">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="6015122">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="6067292">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="6082972">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="6134312">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="6140012">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616204178">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616205123">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616205288">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616205957">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206143">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206149">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206200">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206215">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206269">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206275">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206311">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206386">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206452">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206464">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206467">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206563">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206614">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206626">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206631">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206656">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206664">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616206769">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616207079">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616207376">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616207430">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616208212">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616208980">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616209703">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="616210015">
+      <data key="d0">INT</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="6175692">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="6196392">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="628563">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="63258466">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="6618042">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="6677972">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="6684602">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="678033">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="7046912">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="722623">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="7246122">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="7248952">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="7470952">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="7527052">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="755116">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="755746">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="75863742">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="769985">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="7732472">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="7773732">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="785080">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="8029522">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="806585">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="806975">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="8072492">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="8291932">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="8858022">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="887281">
+      <data key="d0">genuine_accounts</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="8927532">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="8933252">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="9011502">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="90421989">
+      <data key="d0">social_spambots_3</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="9351052">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="9524952">
+      <data key="d0">traditional_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="9564632">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="96435556">
+      <data key="d0">social_spambots_1</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="9664862">
+      <data key="d0">TFP</data>
+      <data key="d1">genuine</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="9939012">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <node id="9993142">
+      <data key="d0">E13</data>
+      <data key="d1">bot</data>
+      <data key="d2">5</data>
+      <data key="d3">0</data>
+    </node>
+    <edge source="290499654" target="475732319">
+      <data key="d4">0.75</data>
+      <data key="d5">1.0</data>
+      <data key="d6">2</data>
+    </edge>
+    <edge source="290499654" target="349392750">
+      <data key="d4">0.75</data>
+      <data key="d5">1.0</data>
+      <data key="d6">2</data>
+    </edge>
+    <edge source="349392750" target="475732319">
+      <data key="d4">0.75</data>
+      <data key="d5">1.0</data>
+      <data key="d6">2</data>
+    </edge>
+    <edge source="38520305" target="50660716">
+      <data key="d4">0.75</data>
+      <data key="d5">1.0</data>
+      <data key="d6">2</data>
+    </edge>
+    <edge source="38520305" target="39321660">
+      <data key="d4">0.6181</data>
+      <data key="d5">0.7363</data>
+      <data key="d6">2</data>
+    </edge>
+    <edge source="38520305" target="35008954">
+      <data key="d4">0.6202</data>
+      <data key="d5">0.7405</data>
+      <data key="d6">2</data>
+    </edge>
+    <edge source="72110028" target="82885728">
+      <data key="d4">0.75</data>
+      <data key="d5">1.0</data>
+      <data key="d6">2</data>
+    </edge>
+    <edge source="157882115" target="157882740">
+      <data key="d4">0.75</data>
+      <data key="d5">1.0</data>
+      <data key="d6">2</data>
+    </edge>
+    <edge source="164560495" target="166142862">
+      <data key="d4">0.7118</data>
+      <data key="d5">0.9237</data>
+      <data key="d6">2</data>
+    </edge>
+  </graph>
+</graphml>
