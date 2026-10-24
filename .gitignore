@@ -79,9 +79,17 @@ desktop.ini
 data/raw/archieves/
 # Cresci processed datasets
 data/processed/cresci_*.csv
+!data/processed/cresci_posts_multisource_cleaned.csv
 
 # Generated analysis reports
 results/reports/cresci_*.csv
+!results/reports/cresci_account_analysis.csv
+!results/reports/cresci_campaign_members.csv
+!results/reports/cresci_campaign_results.csv
+!results/reports/cresci_campaign_validation.csv
+!results/reports/cresci_coordination_results.csv
+!results/reports/cresci_network_metrics.csv
+!results/reports/cresci_semantic_similarity_results.csv
 
 # Generated coordination graphs
 results/graphs/cresci_coordination_graph.*

@@ -1,0 +1,6 @@
+﻿campaign_id,account_count,coordination_edge_count,average_coordination_score,max_coordination_score,source_groups,interpretation
+CRESCI-CAMPAIGN-001,4,3,0.6628,0.75,TWT,Candidate coordination cluster; requires review
+CRESCI-CAMPAIGN-002,3,3,0.75,0.75,INT,Candidate coordination cluster; requires review
+CRESCI-CAMPAIGN-003,2,1,0.75,0.75,social_spambots_3,Candidate coordination cluster; requires review
+CRESCI-CAMPAIGN-004,2,1,0.7118,0.7118,social_spambots_3,Candidate coordination cluster; requires review
+CRESCI-CAMPAIGN-005,2,1,0.75,0.75,INT,Candidate coordination cluster; requires review

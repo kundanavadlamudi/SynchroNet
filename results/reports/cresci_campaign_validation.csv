@@ -1,0 +1,6 @@
+campaign_id,member_count,supporting_post_pairs,unique_account_edges,average_coordination_score,evidence_signals,has_members,has_supporting_edges,validation_status
+CRESCI-CAMPAIGN-001,4,4,3,0.649525,2,True,True,Needs review
+CRESCI-CAMPAIGN-002,3,15,3,0.75,2,True,True,Needs review
+CRESCI-CAMPAIGN-003,2,1,1,0.75,2,True,True,Needs review
+CRESCI-CAMPAIGN-004,2,1,1,0.7118,2,True,True,Needs review
+CRESCI-CAMPAIGN-005,2,4,1,0.75,2,True,True,Needs review
