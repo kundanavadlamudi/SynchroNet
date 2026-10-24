@@ -77,3 +77,21 @@ htmlcov/
 Thumbs.db
 desktop.ini
 data/raw/archieves/
+# Cresci processed datasets
+data/processed/cresci_*.csv
+
+# Generated analysis reports
+results/reports/cresci_*.csv
+
+# Generated coordination graphs
+results/graphs/cresci_coordination_graph.*
+
+# Generated result backups
+results/backups/
+
+# Local dashboard backups
+dashboard/app.py.backup
+dashboard/app_before_dataset_switch.py
+
+# Accidental PowerShell command-history file
+s -ExecutionPolicy RemoteSigned) ; (& cUserskundaNexTrace.venvScriptsActivate.ps1)
