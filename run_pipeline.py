@@ -2,69 +2,52 @@
 
 Runs the full Phase 1 pipeline in the correct dependency order:
 
-    1. create_sample_data    — generate synthetic posts (if needed)
-    2. data_preprocessing    — clean and validate posts
-    3. keyword_loader        — process hashtag/keyword files
-    4. semantic_similarity   — compute pairwise text embeddings
-    5. coordination_detection — flag coordinated account pairs
-    6. account_analysis      — summarise per-account behaviour
-    7. campaign_analysis     — group connected accounts into campaigns
-    8. graph_analysis        — build and render the coordination graph
-    9. risk_scoring          — assign investigation-priority scores
+    1. Ingestion / Sample data   — load posts from synthetic, file, or API provider
+    2. Data preprocessing       — validate and normalize post records
+    3. Keyword loader           — process hashtag/keyword files
+    4. Semantic similarity      — compute pairwise text similarity (neural or TF-IDF fallback)
+    5. Coordination detection   — flag coordinated account pairs
+    6. Account analysis & ML    — summarize behavior and invoke existing bot classifier
+    7. Campaign analysis        — group connected accounts into campaign candidates
+    8. Graph analysis           — build and render the coordination graph
+    9. Risk scoring             — assign transparent, explainable investigation-priority scores
 
 Usage
 -----
-    # From the project root with the activated virtual environment:
+    # Standard demo mode:
     python run_pipeline.py
 
-    # Skip the sample-data generation step if you already have data:
-    python run_pipeline.py --skip-sample-data
+    # Import authorized CSV/JSON data:
+    python run_pipeline.py --source file --posts path/to/posts.csv
 
-    # Back up all existing output files before overwriting them:
+    # Back up existing outputs before running:
     python run_pipeline.py --backup-existing
 
-    # Combine flags:
-    python run_pipeline.py --skip-sample-data --backup-existing
-
-    # Show available options:
-    python run_pipeline.py --help
-
-Notes
------
-* This script does NOT retrain the ML model. Bot classification is a
-  separate Phase 2 pipeline (see run_ml_pipeline.py).
-* Each step is run as an in-process function call, not a subprocess, so
-  Python import paths work correctly.
-* If a required input file is missing the step will print a clear error
-  message and the pipeline will stop.
-* When --backup-existing is supplied, any Phase 1 output file that
-  already exists is copied to results/backups/<YYYYMMDD_HHMMSS>/ before
-  being overwritten. The ML model and ML report files are never touched.
+    # Dry-run validation only (does not write outputs):
+    python run_pipeline.py --dry-run
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import shutil
 import sys
 import time
 import traceback
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
-# Ensure the project root is on sys.path so ``src.*`` imports resolve
-# regardless of where the user launches the script from.
+# Ensure the project root is on sys.path so ``src.*`` imports resolve.
 _PROJECT_ROOT = Path(__file__).resolve().parent
 if str(_PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(_PROJECT_ROOT))
 
 
 # ---------------------------------------------------------------------------
-# Backup helper
+# Backup helper — exactly 10 Phase 1 files preserved for backward compatibility
 # ---------------------------------------------------------------------------
 
-# All Phase 1 output files that the pipeline can overwrite.
-# ML model/report files are deliberately excluded.
 _PHASE1_OUTPUTS = [
     # Stage 1 — sample data
     "data/processed/sample_social_media_posts.csv",
@@ -87,28 +70,20 @@ _PHASE1_OUTPUTS = [
     "results/reports/explainable_risk_results.csv",
 ]
 
+_EXTENDED_OUTPUTS = [
+    "results/reports/account_classification_results.csv",
+    "results/reports/pipeline_run_metadata.json",
+]
+
 
 def _backup_existing_outputs() -> Path:
-    """Copy every existing Phase 1 output file into a timestamped backup
-    directory and return the directory path.
-
-    Backup location::
-
-        results/backups/<YYYYMMDD_HHMMSS>/
-
-    Each file is stored under the same relative sub-path it holds inside
-    the project root, so the backup directory is self-contained and easy
-    to restore from.
-
-    Only files that *already exist* are copied; missing files are skipped
-    silently.  The ML model and ML report files are never included.
-    """
+    """Copy every existing output file into a timestamped backup directory."""
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     backup_dir = _PROJECT_ROOT / "results" / "backups" / timestamp
     backup_dir.mkdir(parents=True, exist_ok=True)
 
     backed_up: list[str] = []
-    for rel in _PHASE1_OUTPUTS:
+    for rel in _PHASE1_OUTPUTS + _EXTENDED_OUTPUTS:
         src = _PROJECT_ROOT / rel
         if src.exists():
             dest = backup_dir / rel
@@ -128,7 +103,7 @@ def _backup_existing_outputs() -> Path:
 
 
 # ---------------------------------------------------------------------------
-# Step runners
+# Step runner
 # ---------------------------------------------------------------------------
 
 def _run_step(step_name: str, fn) -> bool:
@@ -143,7 +118,6 @@ def _run_step(step_name: str, fn) -> bool:
         print(f"\n  [OK] {step_name} completed in {elapsed:.1f}s")
         return True
     except SystemExit as exc:
-        # Some scripts call sys.exit(); treat non-zero as failure.
         if exc.code not in (None, 0):
             print(f"\n  [FAIL] {step_name} exited with code {exc.code}")
             return False
@@ -162,35 +136,61 @@ def _run_step(step_name: str, fn) -> bool:
 def run_pipeline(
     skip_sample_data: bool = False,
     backup_existing: bool = False,
+    source: str = "demo",
+    posts_path: str | None = None,
+    accounts_path: str | None = None,
+    dry_run: bool = False,
 ) -> int:
-    """Run all Phase 1 steps in order.  Returns 0 on success, 1 on failure."""
+    """Run all Phase 1 and inference steps in order. Returns 0 on success, 1 on failure."""
 
     total_start = time.perf_counter()
-    print("\nNexTrace — Phase 1 Coordination Analysis Pipeline")
+    run_timestamp = datetime.now(timezone.utc).isoformat()
+
+    print("\nNexTrace — Coordinated Disinformation Detection Pipeline")
     print("=" * 60)
-    print("This pipeline does NOT retrain the ML bot classifier.")
-    print("Run  run_ml_pipeline.py  for Phase 2 (bot classification).")
+    print(f"Run started at: {run_timestamp}")
+    print(f"Data source   : {source}")
     print("=" * 60)
 
     # ------------------------------------------------------------------
     # Optional backup of existing output files
     # ------------------------------------------------------------------
-    if backup_existing:
+    if backup_existing and not dry_run:
         print("\n  --backup-existing: copying existing output files …")
         _backup_existing_outputs()
 
     # ------------------------------------------------------------------
-    # Step 1 — Sample data generation
+    # Step 1 — Ingestion / Data Loading
     # ------------------------------------------------------------------
-    if not skip_sample_data:
-        def _create_sample_data():
-            from src.create_sample_data import main
-            main()
+    from src.config import SAMPLE_POSTS_FILE, CLEANED_POSTS_FILE
+    from src.ingestion import get_data_provider, IngestionError, AuthenticationError
 
-        if not _run_step("1 / 9  Create sample data", _create_sample_data):
-            return 1
-    else:
-        print("\n  Skipping sample-data generation (--skip-sample-data).")
+    def _ingest_data():
+        if source in ("file", "csv", "json") and posts_path:
+            provider = get_data_provider("file", posts_path=posts_path, accounts_path=accounts_path)
+            posts_df, meta = provider.fetch_posts()
+            print(f"Loaded {len(posts_df)} posts from {posts_path}")
+            if not dry_run:
+                posts_df.to_csv(SAMPLE_POSTS_FILE, index=False)
+        elif source in ("api", "rest", "feed"):
+            provider = get_data_provider("api")
+            posts_df, meta = provider.fetch_posts()
+            print(f"Fetched {len(posts_df)} posts from API")
+            if not dry_run:
+                posts_df.to_csv(SAMPLE_POSTS_FILE, index=False)
+        else:
+            if not skip_sample_data:
+                from src.create_sample_data import main as create_sample
+                create_sample()
+            else:
+                print("Skipping sample-data generation (--skip-sample-data).")
+
+    if not _run_step("1 / 9  Data Ingestion / Sourcing", _ingest_data):
+        return 1
+
+    if dry_run:
+        print("\n[DRY RUN] Completed ingestion validation. Exiting without writing full pipeline results.")
+        return 0
 
     # ------------------------------------------------------------------
     # Step 2 — Data preprocessing
@@ -233,13 +233,13 @@ def run_pipeline(
         return 1
 
     # ------------------------------------------------------------------
-    # Step 6 — Account analysis
+    # Step 6 — Account analysis & ML bot classification
     # ------------------------------------------------------------------
     def _account_analysis():
         from src.account_analysis import main
         main()
 
-    if not _run_step("6 / 9  Account analysis", _account_analysis):
+    if not _run_step("6 / 9  Account analysis & ML classification", _account_analysis):
         return 1
 
     # ------------------------------------------------------------------
@@ -273,9 +273,27 @@ def run_pipeline(
         return 1
 
     # ------------------------------------------------------------------
-    # Summary
+    # Write Pipeline Run Metadata
     # ------------------------------------------------------------------
     total_elapsed = time.perf_counter() - total_start
+    metadata_file = _PROJECT_ROOT / "results" / "reports" / "pipeline_run_metadata.json"
+    metadata_file.parent.mkdir(parents=True, exist_ok=True)
+    metadata_file.write_text(
+        json.dumps(
+            {
+                "run_timestamp": run_timestamp,
+                "completed_at": datetime.now(timezone.utc).isoformat(),
+                "duration_seconds": round(total_elapsed, 2),
+                "source": source,
+                "is_synthetic": source == "demo",
+                "posts_file": posts_path or str(SAMPLE_POSTS_FILE),
+                "pipeline_version": "NexTrace-v1.1",
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
     print(f"\n{'='*60}")
     print(f"  Pipeline completed successfully in {total_elapsed:.1f}s")
     print(f"{'='*60}")
@@ -299,6 +317,7 @@ def run_pipeline(
         ("Campaign results",      CAMPAIGN_RESULTS_FILE),
         ("Coordination graph",    COORDINATION_GRAPH_PNG),
         ("Risk scores",           RISK_RESULTS_FILE),
+        ("Run metadata",          metadata_file),
     ]
     for label, path in output_files:
         status = "[OK]" if path.exists() else "[MISSING]"
@@ -315,8 +334,26 @@ def run_pipeline(
 
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="NexTrace Phase 1 coordination-analysis pipeline",
+        description="NexTrace coordinated disinformation detection pipeline",
         formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument(
+        "--source",
+        choices=["demo", "file", "api"],
+        default="demo",
+        help="Data source mode: 'demo' (default), 'file', or 'api'.",
+    )
+    parser.add_argument(
+        "--posts",
+        type=str,
+        default=None,
+        help="Path to CSV or JSON file containing posts (required when --source file).",
+    )
+    parser.add_argument(
+        "--accounts",
+        type=str,
+        default=None,
+        help="Optional path to CSV or JSON file containing account metadata.",
     )
     parser.add_argument(
         "--skip-sample-data",
@@ -334,9 +371,14 @@ def _parse_args() -> argparse.Namespace:
         help=(
             "Before running the pipeline, copy every existing Phase 1 output "
             "file to results/backups/<YYYYMMDD_HHMMSS>/. "
-            "Useful when you want to preserve results from a previous run "
-            "before overwriting them. The ML model is never included."
+            "Useful when you want to preserve results from a previous run."
         ),
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        default=False,
+        help="Validate source inputs and data contracts without overwriting pipeline results.",
     )
     return parser.parse_args()
 
@@ -347,5 +389,9 @@ if __name__ == "__main__":
         run_pipeline(
             skip_sample_data=args.skip_sample_data,
             backup_existing=args.backup_existing,
+            source=args.source,
+            posts_path=args.posts,
+            accounts_path=args.accounts,
+            dry_run=args.dry_run,
         )
     )

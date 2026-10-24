@@ -1357,10 +1357,22 @@ with st.spinner("Loading NexTrace pipeline outputs and model metadata…"):
     _metadata, _metadata_err = _load_json(str(MODEL_METADATA_FILE))
     _evaluation, _evaluation_err = _load_json(str(ML_EVALUATION_SUMMARY_FILE))
     _explanations, _explanations_err = _load_json(str(ML_EXPLANATIONS_FILE))
+    _run_meta, _run_meta_err = _load_json(
+        str(_PROJECT_ROOT / "results" / "reports" / "pipeline_run_metadata.json")
+    )
+    _classification_df, _classification_err = _load_csv(
+        str(_PROJECT_ROOT / "results" / "reports" / "account_classification_results.csv"),
+        "Account ML classifications",
+    )
 
 _metadata = _metadata if isinstance(_metadata, dict) else {}
 _test_metrics = _metadata.get("test_metrics", {}) if isinstance(_metadata, dict) else {}
-_demo_mode = _is_demo_dataset(_posts_df)
+_run_meta = _run_meta if isinstance(_run_meta, dict) else {}
+_demo_mode = (
+    _is_demo_dataset(_posts_df)
+    or _run_meta.get("is_synthetic", False)
+    or _run_meta.get("source") == "demo"
+)
 
 # ---------------------------------------------------------------------------
 # Sidebar
@@ -1470,6 +1482,60 @@ with st.sidebar:
         )
     else:
         st.warning("Model file not found.", icon=":material/warning:")
+
+    st.markdown('<div class="nx-divider"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="nx-side-label">Ingestion & Run Provenance</div>', unsafe_allow_html=True)
+    _active_src = _run_meta.get("source", "demo")
+    _run_time = _run_meta.get("run_timestamp", "")
+    _time_display = _run_time[:19].replace("T", " ") if _run_time else "Baseline Run"
+
+    st.markdown(
+        f"""
+        <div class="nx-side-card" style="margin-bottom:10px">
+            <div style="color:#e2e8f0;font-size:0.78rem;font-weight:700">Source: <span style="color:#22d3ee">{html.escape(_active_src.upper())}</span></div>
+            <div style="color:#64748b;font-size:0.68rem;margin-top:2px">Run: {_time_display} UTC</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    with st.expander("Import Custom Dataset", expanded=False):
+        uploaded_file = st.file_uploader(
+            "Upload posts (CSV/JSON)",
+            type=["csv", "json"],
+            help="Upload posts containing post_id, account_id, text, timestamp.",
+            key="dash_uploader",
+        )
+        if uploaded_file is not None:
+            if st.button("Run Pipeline On Upload", type="primary"):
+                try:
+                    from src.contracts import validate_and_normalize_posts
+                    if uploaded_file.name.endswith(".csv"):
+                        up_df = pd.read_csv(uploaded_file)
+                    else:
+                        up_df = pd.read_json(uploaded_file)
+                    cleaned_up, val_warn = validate_and_normalize_posts(
+                        up_df, default_source="manual_upload", default_provenance=uploaded_file.name
+                    )
+                    from src.config import SAMPLE_POSTS_FILE
+                    cleaned_up.to_csv(SAMPLE_POSTS_FILE, index=False)
+                    from run_pipeline import run_pipeline
+                    run_pipeline(source="file", posts_path=str(SAMPLE_POSTS_FILE), skip_sample_data=False)
+                    st.cache_data.clear()
+                    st.success("Analysis complete! Reloading...")
+                    st.rerun()
+                except Exception as up_err:
+                    st.error(f"Upload error: {up_err}")
+
+    with st.expander("Live API / Feed Provider", expanded=False):
+        from src.ingestion import get_data_provider
+        api_prov = get_data_provider("api")
+        api_stat = api_prov.check_status()
+        if api_stat.get("configured"):
+            st.success(f"Configured: {api_stat.get('endpoint')}")
+        else:
+            st.info(api_stat.get("message", "API provider unconfigured."))
+            st.caption("Provide NEXTRACE_API_BASE_URL and NEXTRACE_API_BEARER_TOKEN in .env.")
 
     st.markdown('<div class="nx-divider"></div>', unsafe_allow_html=True)
     st.markdown(
@@ -2906,12 +2972,25 @@ with tab_bot:
                     "Explanations were pre-computed on held-out Cresci test accounts. They are "
                     "unrelated to the demonstration posts and do not describe any real person."
                 )
-        elif _explanations_err:
-            st.caption(f"Pre-computed explanations unavailable: {_explanations_err}")
+    if not _classification_df.empty:
+        st.markdown('<div class="nx-divider"></div>', unsafe_allow_html=True)
+        _section_header(
+            "Active Dataset Accounts — Bot Classification",
+            "Automatic inference on accounts from the current pipeline run using the trained Random Forest model",
+        )
+        st.dataframe(
+            _classification_df,
+            use_container_width=True,
+            hide_index=True,
+        )
+        st.caption(
+            "⚠️ Resemblance indicator only: Scores reflect similarity to historical Cresci training accounts. "
+            "A high bot probability is NOT proof of automated or malicious intent; human review is required."
+        )
 
     st.markdown('<div class="nx-divider"></div>', unsafe_allow_html=True)
     _section_header(
-        "Classify an account",
+        "Classify an account (Interactive)",
         "Provide a complete feature vector. Presets are illustrative examples, not real accounts.",
     )
 

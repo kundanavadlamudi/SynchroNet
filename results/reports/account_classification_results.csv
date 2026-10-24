@@ -1,0 +1,11 @@
+﻿account_id,predicted_label,predicted_label_name,bot_probability,genuine_probability,label_mapping,model_status,ml_limitation
+A101,1,Bot,0.58,0.42,"{'Genuine': 0, 'Bot': 1}",Scored with trained Random Forest classifier,Resemblance indicator based on Cresci benchmark; not proof of inauthentic intent
+A102,1,Bot,0.58,0.42,"{'Genuine': 0, 'Bot': 1}",Scored with trained Random Forest classifier,Resemblance indicator based on Cresci benchmark; not proof of inauthentic intent
+A103,1,Bot,0.58,0.42,"{'Genuine': 0, 'Bot': 1}",Scored with trained Random Forest classifier,Resemblance indicator based on Cresci benchmark; not proof of inauthentic intent
+A104,1,Bot,0.58,0.42,"{'Genuine': 0, 'Bot': 1}",Scored with trained Random Forest classifier,Resemblance indicator based on Cresci benchmark; not proof of inauthentic intent
+A105,1,Bot,0.555,0.445,"{'Genuine': 0, 'Bot': 1}",Scored with trained Random Forest classifier,Resemblance indicator based on Cresci benchmark; not proof of inauthentic intent
+A106,1,Bot,0.58,0.42,"{'Genuine': 0, 'Bot': 1}",Scored with trained Random Forest classifier,Resemblance indicator based on Cresci benchmark; not proof of inauthentic intent
+A107,1,Bot,0.525,0.475,"{'Genuine': 0, 'Bot': 1}",Scored with trained Random Forest classifier,Resemblance indicator based on Cresci benchmark; not proof of inauthentic intent
+A108,1,Bot,0.57,0.43,"{'Genuine': 0, 'Bot': 1}",Scored with trained Random Forest classifier,Resemblance indicator based on Cresci benchmark; not proof of inauthentic intent
+A109,1,Bot,0.58,0.42,"{'Genuine': 0, 'Bot': 1}",Scored with trained Random Forest classifier,Resemblance indicator based on Cresci benchmark; not proof of inauthentic intent
+A110,1,Bot,0.575,0.425,"{'Genuine': 0, 'Bot': 1}",Scored with trained Random Forest classifier,Resemblance indicator based on Cresci benchmark; not proof of inauthentic intent
