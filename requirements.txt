@@ -1,8 +1,46 @@
-pandas
-numpy
-scikit-learn
-networkx
-matplotlib
-streamlit
-plotly
-sentence-transformers
+# NexTrace — Python dependencies
+#
+# Pinned to versions confirmed working in .venv (Python 3.11.9) as of
+# October 2026. The trained Random Forest model was produced with these
+# exact library versions; upgrading scikit-learn or joblib may require
+# retraining.
+#
+# To install:
+#   python -m pip install -r requirements.txt
+#
+# To create a fresh environment and install:
+#   python -m venv .venv
+#   .venv\Scripts\activate          # Windows
+#   source .venv/bin/activate       # Linux / macOS
+#   pip install -r requirements.txt
+
+# Core data science
+pandas==3.0.6
+numpy==2.4.6
+scikit-learn==1.9.1
+joblib==1.6.0
+scipy==1.17.1
+
+# Graph analysis
+networkx==3.6.1
+
+# Visualisation
+matplotlib==3.11.2
+plotly==7.1.0
+
+# Dashboard
+streamlit==1.66.0
+
+# Semantic similarity (NLP)
+sentence-transformers==6.1.0
+transformers==5.20.2
+torch==2.14.1
+tokenizers==0.23.3
+
+# Explainability
+shap==0.51.0
+lime==0.2.0.1
+
+# Utilities
+tqdm==4.70.1
+requests==2.34.2

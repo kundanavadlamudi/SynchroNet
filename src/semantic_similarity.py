@@ -5,6 +5,8 @@ from pathlib import Path
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
+from src.config import SEMANTIC_THRESHOLD, SENTENCE_TRANSFORMER_MODEL
+
 
 # Project paths
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,11 +21,11 @@ OUTPUT_DIR = BASE_DIR / "results" / "reports"
 OUTPUT_FILE = OUTPUT_DIR / "semantic_similarity_results.csv"
 
 
-# Pretrained sentence embedding model
-MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+# Pretrained sentence embedding model — configured in src/config.py.
+MODEL_NAME = SENTENCE_TRANSFORMER_MODEL
 
-# Similarity threshold
-SIMILARITY_THRESHOLD = 0.70
+# Similarity threshold — configured in src/config.py.
+SIMILARITY_THRESHOLD = SEMANTIC_THRESHOLD
 
 
 def calculate_semantic_similarity(df):

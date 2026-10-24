@@ -4,14 +4,12 @@ from pathlib import Path
 # Project directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Output directory
+# Output directory and file paths (pure Path objects — no side effects on import)
 OUTPUT_DIR = BASE_DIR / "data" / "processed"
-OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-
 OUTPUT_FILE = OUTPUT_DIR / "sample_social_media_posts.csv"
 
 # Sample social media posts for testing NexTrace
-data = [
+_SAMPLE_DATA = [
     {
         "post_id": "P001",
         "account_id": "A101",
@@ -84,16 +82,27 @@ data = [
     }
 ]
 
-# Create DataFrame
-df = pd.DataFrame(data)
 
-# Convert timestamps
-df["timestamp"] = pd.to_datetime(df["timestamp"])
+def main():
+    """Generate synthetic sample posts and write them to OUTPUT_FILE."""
 
-# Save dataset
-df.to_csv(OUTPUT_FILE, index=False)
+    # Create the output directory only when we are about to write output.
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-print("Sample dataset created successfully!")
-print(f"Total posts: {len(df)}")
-print(f"Unique accounts: {df['account_id'].nunique()}")
-print(f"Saved to: {OUTPUT_FILE}")
+    # Create DataFrame
+    df = pd.DataFrame(_SAMPLE_DATA)
+
+    # Convert timestamps
+    df["timestamp"] = pd.to_datetime(df["timestamp"])
+
+    # Save dataset
+    df.to_csv(OUTPUT_FILE, index=False)
+
+    print("Sample dataset created successfully!")
+    print(f"Total posts: {len(df)}")
+    print(f"Unique accounts: {df['account_id'].nunique()}")
+    print(f"Saved to: {OUTPUT_FILE}")
+
+
+if __name__ == "__main__":
+    main()

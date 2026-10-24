@@ -1,6 +1,13 @@
 import pandas as pd
 from pathlib import Path
 
+from src.config import (
+    SEMANTIC_THRESHOLD,
+    TIME_WINDOW_MINUTES,
+    RISK_HIGH_THRESHOLD,
+    RISK_MEDIUM_THRESHOLD,
+)
+
 
 # ==========================================
 # 1. PROJECT PATHS
@@ -76,19 +83,19 @@ def calculate_risk(df):
     # Identify whether the posts were published
     # within the configured time window.
     df["close_in_time"] = (
-        df["time_difference_minutes"] <= 10
+        df["time_difference_minutes"] <= TIME_WINDOW_MINUTES
     )
 
     # Explain the evidence for each pair.
     df["evidence"] = df.apply(
         lambda row: "; ".join([
             "High semantic similarity"
-            if row["semantic_similarity"] >= 0.70
+            if row["semantic_similarity"] >= SEMANTIC_THRESHOLD
             else "Lower semantic similarity",
 
-            "Posts published within 10 minutes"
+            f"Posts published within {TIME_WINDOW_MINUTES} minutes"
             if row["close_in_time"]
-            else "Posts published more than 10 minutes apart",
+            else f"Posts published more than {TIME_WINDOW_MINUTES} minutes apart",
 
             "Shared URL detected"
             if row["shared_url"]
@@ -100,9 +107,9 @@ def calculate_risk(df):
     # Convert the coordination score into an
     # investigation-priority category.
     def priority(score):
-        if score >= 0.80:
+        if score >= RISK_HIGH_THRESHOLD:
             return "High"
-        elif score >= 0.60:
+        elif score >= RISK_MEDIUM_THRESHOLD:
             return "Medium"
         else:
             return "Low"

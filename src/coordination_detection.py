@@ -1,6 +1,15 @@
 import pandas as pd
 from pathlib import Path
 
+from src.config import (
+    SEMANTIC_THRESHOLD,
+    TIME_WINDOW_MINUTES,
+    COORDINATION_WEIGHT_SEMANTIC,
+    COORDINATION_WEIGHT_TIME,
+    COORDINATION_WEIGHT_URL,
+    MIN_SIGNAL_COUNT,
+)
+
 
 # ==========================================
 # 1. PROJECT PATHS
@@ -30,9 +39,11 @@ OUTPUT_FILE = OUTPUT_DIR / "coordination_results.csv"
 # ==========================================
 # 2. DETECTION SETTINGS
 # ==========================================
-
-TIME_WINDOW_MINUTES = 10
-SEMANTIC_THRESHOLD = 0.70
+#
+# These values are now imported from src/config.py:
+#   TIME_WINDOW_MINUTES, SEMANTIC_THRESHOLD,
+#   COORDINATION_WEIGHT_SEMANTIC, COORDINATION_WEIGHT_TIME,
+#   COORDINATION_WEIGHT_URL, MIN_SIGNAL_COUNT
 
 
 # ==========================================
@@ -128,9 +139,9 @@ def detect_coordination(posts, semantic_results):
 
             # Calculate the coordination score.
             coordination_score = (
-                0.50 * semantic_similarity
-                + 0.25 * float(close_in_time)
-                + 0.25 * float(shared_url)
+                COORDINATION_WEIGHT_SEMANTIC * semantic_similarity
+                + COORDINATION_WEIGHT_TIME * float(close_in_time)
+                + COORDINATION_WEIGHT_URL * float(shared_url)
             )
 
             # Count the supporting signals.
@@ -142,7 +153,7 @@ def detect_coordination(posts, semantic_results):
 
             # Require similar content plus at least one
             # additional coordination signal.
-            if similar_text and signal_count >= 2:
+            if similar_text and signal_count >= MIN_SIGNAL_COUNT:
 
                 results.append({
                     "account_1": post1["account_id"],
