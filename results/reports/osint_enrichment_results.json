@@ -7,7 +7,7 @@
       "matched_fact_checks": [],
       "domain_investigations": [],
       "ocr_extracted_text": "",
-      "enrichment_timestamp": "2026-10-24T08:45:21.594180+00:00",
+      "enrichment_timestamp": "2026-10-24T09:01:02.962990+00:00",
       "limitations": "OSINT evidence provides external context and public reporting; absence of fact-checks does not imply truthfulness, and external ratings remain the sole attribution of original publishers."
     },
     {
@@ -17,7 +17,7 @@
       "matched_fact_checks": [],
       "domain_investigations": [],
       "ocr_extracted_text": "",
-      "enrichment_timestamp": "2026-10-24T08:45:22.494663+00:00",
+      "enrichment_timestamp": "2026-10-24T09:01:06.862162+00:00",
       "limitations": "OSINT evidence provides external context and public reporting; absence of fact-checks does not imply truthfulness, and external ratings remain the sole attribution of original publishers."
     },
     {
@@ -27,7 +27,7 @@
       "matched_fact_checks": [],
       "domain_investigations": [],
       "ocr_extracted_text": "",
-      "enrichment_timestamp": "2026-10-24T08:45:23.421584+00:00",
+      "enrichment_timestamp": "2026-10-24T09:01:16.887359+00:00",
       "limitations": "OSINT evidence provides external context and public reporting; absence of fact-checks does not imply truthfulness, and external ratings remain the sole attribution of original publishers."
     },
     {
@@ -37,7 +37,7 @@
       "matched_fact_checks": [],
       "domain_investigations": [],
       "ocr_extracted_text": "",
-      "enrichment_timestamp": "2026-10-24T08:45:24.298494+00:00",
+      "enrichment_timestamp": "2026-10-24T09:01:17.768160+00:00",
       "limitations": "OSINT evidence provides external context and public reporting; absence of fact-checks does not imply truthfulness, and external ratings remain the sole attribution of original publishers."
     },
     {
@@ -47,7 +47,7 @@
       "matched_fact_checks": [],
       "domain_investigations": [],
       "ocr_extracted_text": "",
-      "enrichment_timestamp": "2026-10-24T08:45:25.146763+00:00",
+      "enrichment_timestamp": "2026-10-24T09:01:18.677490+00:00",
       "limitations": "OSINT evidence provides external context and public reporting; absence of fact-checks does not imply truthfulness, and external ratings remain the sole attribution of original publishers."
     }
   ],
@@ -59,7 +59,7 @@
       "matched_fact_checks": [],
       "domain_investigations": [],
       "ocr_extracted_text": "",
-      "enrichment_timestamp": "2026-10-24T08:45:26.053013+00:00",
+      "enrichment_timestamp": "2026-10-24T09:01:22.567682+00:00",
       "limitations": "OSINT evidence provides external context and public reporting; absence of fact-checks does not imply truthfulness, and external ratings remain the sole attribution of original publishers."
     }
   ],
@@ -92,7 +92,7 @@
       "disclaimer": "OCR text extraction converts image contents into textual tokens for indexing; it does NOT demonstrate visual forgery, image manipulation, or malicious attribution."
     }
   },
-  "generated_at": "2026-10-24T08:45:27.026871+00:00",
+  "generated_at": "2026-10-24T09:01:23.595915+00:00",
   "version": "1.1.0",
   "methodology_disclaimer": "OSINT enrichment aggregates external news, third-party claim reviews, and domain registries. These sources provide context and do not represent internal model predictions or legal attributions."
 }
