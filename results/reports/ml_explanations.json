@@ -1,0 +1,362 @@
+[
+  {
+    "account_id": "1000486495",
+    "true_label": 0,
+    "source_group": "e13",
+    "shap": {
+      "method": "shap",
+      "available": true,
+      "model_name": "random_forest",
+      "feature_attributions": {
+        "total_posts": 0.019802294530362523,
+        "posts_with_urls": -0.04788784869435929,
+        "unique_texts": 0.021226704514996524,
+        "duplicate_text_posts": -0.008371517799436868,
+        "average_text_length": -0.051587077442740985,
+        "average_word_count": -0.007992503939204337,
+        "average_time_between_posts_minutes": -0.0004943771106440816,
+        "url_post_ratio": -0.06538279525795802,
+        "duplicate_text_ratio": -0.013584839683625205,
+        "statuses_count": 0.07155849965471862,
+        "followers_count": 0.02516329672961195,
+        "friends_count": -0.11504008227238596,
+        "favourites_count": -0.16757909231902038,
+        "listed_count": -0.01483367388358743,
+        "default_profile": 0.0,
+        "geo_enabled": 0.0,
+        "verified": 0.0,
+        "protected": 0.0,
+        "description_length": -0.021880493958497886,
+        "friends_followers_ratio": -0.06899325482531546,
+        "tweet_data_available": 0.0009069666248853828
+      },
+      "top_features": [
+        [
+          "favourites_count",
+          -0.16757909231902038
+        ],
+        [
+          "friends_count",
+          -0.11504008227238596
+        ],
+        [
+          "statuses_count",
+          0.07155849965471862
+        ],
+        [
+          "friends_followers_ratio",
+          -0.06899325482531546
+        ],
+        [
+          "url_post_ratio",
+          -0.06538279525795802
+        ],
+        [
+          "average_text_length",
+          -0.051587077442740985
+        ],
+        [
+          "posts_with_urls",
+          -0.04788784869435929
+        ],
+        [
+          "followers_count",
+          0.02516329672961195
+        ],
+        [
+          "description_length",
+          -0.021880493958497886
+        ],
+        [
+          "unique_texts",
+          0.021226704514996524
+        ]
+      ]
+    },
+    "lime": {
+      "method": "lime",
+      "available": true,
+      "model_name": "random_forest",
+      "feature_attributions": {
+        "favourites_count": -0.06775771008754283,
+        "friends_followers_ratio": 0.058504268122978036,
+        "friends_count": 0.04786718768431236,
+        "statuses_count": -0.04077561117525516,
+        "duplicate_text_ratio": 0.023957730349159753,
+        "posts_with_urls": -0.01882870098727436,
+        "url_post_ratio": -0.014659107687173725,
+        "followers_count": -0.01181833530745521
+      }
+    }
+  },
+  {
+    "account_id": "1001875776",
+    "true_label": 0,
+    "source_group": "e13",
+    "shap": {
+      "method": "shap",
+      "available": true,
+      "model_name": "random_forest",
+      "feature_attributions": {
+        "total_posts": -0.016068992547128885,
+        "posts_with_urls": -0.05499731028006504,
+        "unique_texts": -0.01501668974053266,
+        "duplicate_text_posts": -0.017535662502228447,
+        "average_text_length": -0.04907595408102963,
+        "average_word_count": -0.006416867671928634,
+        "average_time_between_posts_minutes": 0.002164096358135276,
+        "url_post_ratio": -0.04109491484677131,
+        "duplicate_text_ratio": -0.03189903665247776,
+        "statuses_count": -0.06573050730655053,
+        "followers_count": -0.030947185469558585,
+        "friends_count": -0.022980921687855135,
+        "favourites_count": -0.069970223037248,
+        "listed_count": -0.02134810607626156,
+        "default_profile": 0.0,
+        "geo_enabled": 0.0,
+        "verified": 0.0,
+        "protected": 0.0,
+        "description_length": -0.02024984512326625,
+        "friends_followers_ratio": -0.03328308537740177,
+        "tweet_data_available": -0.000518589090032272
+      },
+      "top_features": [
+        [
+          "favourites_count",
+          -0.069970223037248
+        ],
+        [
+          "statuses_count",
+          -0.06573050730655053
+        ],
+        [
+          "posts_with_urls",
+          -0.05499731028006504
+        ],
+        [
+          "average_text_length",
+          -0.04907595408102963
+        ],
+        [
+          "url_post_ratio",
+          -0.04109491484677131
+        ],
+        [
+          "friends_followers_ratio",
+          -0.03328308537740177
+        ],
+        [
+          "duplicate_text_ratio",
+          -0.03189903665247776
+        ],
+        [
+          "followers_count",
+          -0.030947185469558585
+        ],
+        [
+          "friends_count",
+          -0.022980921687855135
+        ],
+        [
+          "listed_count",
+          -0.02134810607626156
+        ]
+      ]
+    },
+    "lime": {
+      "method": "lime",
+      "available": true,
+      "model_name": "random_forest",
+      "feature_attributions": {
+        "favourites_count": -0.06718445528226584,
+        "friends_followers_ratio": 0.058682009684177555,
+        "friends_count": 0.046837070369151364,
+        "statuses_count": -0.04054369596919155,
+        "duplicate_text_ratio": 0.024609058353584894,
+        "url_post_ratio": -0.014727506937771317,
+        "average_word_count": 0.00523320947228653,
+        "average_text_length": -0.004327249397193398
+      }
+    }
+  },
+  {
+    "account_id": "1120176186",
+    "true_label": 1,
+    "source_group": "fsf",
+    "shap": {
+      "method": "shap",
+      "available": true,
+      "model_name": "random_forest",
+      "feature_attributions": {
+        "total_posts": 0.027476050056276794,
+        "posts_with_urls": 0.059875977008007925,
+        "unique_texts": 0.023126579028223605,
+        "duplicate_text_posts": -0.003862872282726613,
+        "average_text_length": 0.01074214699445477,
+        "average_word_count": -0.0036192362954491205,
+        "average_time_between_posts_minutes": -0.0029314131575206943,
+        "url_post_ratio": 0.05294594975588913,
+        "duplicate_text_ratio": -0.006552106267765431,
+        "statuses_count": 0.07849642747177583,
+        "followers_count": 0.03229913405483317,
+        "friends_count": 0.006234824804325806,
+        "favourites_count": 0.11547302887242084,
+        "listed_count": -0.005355358585703777,
+        "default_profile": 0.0,
+        "geo_enabled": 0.0,
+        "verified": 0.0,
+        "protected": 0.0,
+        "description_length": -0.0047794481159273445,
+        "friends_followers_ratio": 0.11955139748226302,
+        "tweet_data_available": 0.0009091240444204134
+      },
+      "top_features": [
+        [
+          "friends_followers_ratio",
+          0.11955139748226302
+        ],
+        [
+          "favourites_count",
+          0.11547302887242084
+        ],
+        [
+          "statuses_count",
+          0.07849642747177583
+        ],
+        [
+          "posts_with_urls",
+          0.059875977008007925
+        ],
+        [
+          "url_post_ratio",
+          0.05294594975588913
+        ],
+        [
+          "followers_count",
+          0.03229913405483317
+        ],
+        [
+          "total_posts",
+          0.027476050056276794
+        ],
+        [
+          "unique_texts",
+          0.023126579028223605
+        ],
+        [
+          "average_text_length",
+          0.01074214699445477
+        ],
+        [
+          "duplicate_text_ratio",
+          -0.006552106267765431
+        ]
+      ]
+    },
+    "lime": {
+      "method": "lime",
+      "available": true,
+      "model_name": "random_forest",
+      "feature_attributions": {
+        "favourites_count": -0.06695636470982287,
+        "friends_followers_ratio": 0.06069090565040333,
+        "friends_count": 0.04776627482755303,
+        "statuses_count": -0.040955207358374976,
+        "posts_with_urls": -0.018691987973332706,
+        "url_post_ratio": -0.014885949873076204,
+        "description_length": -0.009380295303186945,
+        "average_word_count": 0.0054624540948515704
+      }
+    }
+  },
+  {
+    "account_id": "1124249136",
+    "true_label": 1,
+    "source_group": "fsf",
+    "shap": {
+      "method": "shap",
+      "available": true,
+      "model_name": "random_forest",
+      "feature_attributions": {
+        "total_posts": 0.02631785205092717,
+        "posts_with_urls": 0.05990220713026024,
+        "unique_texts": 0.025106259471448115,
+        "duplicate_text_posts": -0.004066483510524392,
+        "average_text_length": 0.010149424091232696,
+        "average_word_count": -0.0014225756109717436,
+        "average_time_between_posts_minutes": -7.120518663876777e-05,
+        "url_post_ratio": 0.0550086767403157,
+        "duplicate_text_ratio": -0.0069866358549558714,
+        "statuses_count": 0.08114297319283012,
+        "followers_count": 0.03377124691453227,
+        "friends_count": -0.003358376931272498,
+        "favourites_count": 0.1181699171189614,
+        "listed_count": -0.004314385608867142,
+        "default_profile": 0.0,
+        "geo_enabled": 0.0,
+        "verified": 0.0,
+        "protected": 0.0,
+        "description_length": 0.0013831075235623922,
+        "friends_followers_ratio": 0.10585685952836683,
+        "tweet_data_available": 0.003441343808592942
+      },
+      "top_features": [
+        [
+          "favourites_count",
+          0.1181699171189614
+        ],
+        [
+          "friends_followers_ratio",
+          0.10585685952836683
+        ],
+        [
+          "statuses_count",
+          0.08114297319283012
+        ],
+        [
+          "posts_with_urls",
+          0.05990220713026024
+        ],
+        [
+          "url_post_ratio",
+          0.0550086767403157
+        ],
+        [
+          "followers_count",
+          0.03377124691453227
+        ],
+        [
+          "total_posts",
+          0.02631785205092717
+        ],
+        [
+          "unique_texts",
+          0.025106259471448115
+        ],
+        [
+          "average_text_length",
+          0.010149424091232696
+        ],
+        [
+          "duplicate_text_ratio",
+          -0.0069866358549558714
+        ]
+      ]
+    },
+    "lime": {
+      "method": "lime",
+      "available": true,
+      "model_name": "random_forest",
+      "feature_attributions": {
+        "favourites_count": -0.06718437737625119,
+        "friends_followers_ratio": 0.05936084873567842,
+        "friends_count": 0.04782375215362612,
+        "statuses_count": -0.040119025607768914,
+        "duplicate_text_ratio": 0.02285128287623534,
+        "posts_with_urls": -0.018888279966998444,
+        "url_post_ratio": -0.014838201037568279,
+        "description_length": -0.009952087443788232
+      }
+    }
+  }
+]

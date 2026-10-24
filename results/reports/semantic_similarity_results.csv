@@ -1,0 +1,11 @@
+﻿post_1,account_1,post_2,account_2,text_similarity,similarity_type
+P001,A101,P002,A102,1.0,Semantic
+P001,A101,P003,A103,1.0,Semantic
+P001,A101,P006,A106,1.0,Semantic
+P001,A101,P009,A109,1.0,Semantic
+P002,A102,P003,A103,1.0,Semantic
+P002,A102,P006,A106,1.0,Semantic
+P002,A102,P009,A109,1.0,Semantic
+P003,A103,P006,A106,1.0,Semantic
+P003,A103,P009,A109,1.0,Semantic
+P006,A106,P009,A109,1.0,Semantic

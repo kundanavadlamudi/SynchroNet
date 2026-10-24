@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d3" for="edge" attr.name="shared_url" attr.type="string" />
+  <key id="d2" for="edge" attr.name="time_difference_minutes" attr.type="double" />
+  <key id="d1" for="edge" attr.name="semantic_similarity" attr.type="double" />
+  <key id="d0" for="edge" attr.name="weight" attr.type="double" />
+  <graph edgedefault="undirected">
+    <node id="A101" />
+    <node id="A102" />
+    <node id="A103" />
+    <node id="A106" />
+    <node id="A109" />
+    <edge source="A101" target="A102">
+      <data key="d0">1.0</data>
+      <data key="d1">1.0</data>
+      <data key="d2">1.0</data>
+      <data key="d3">True</data>
+    </edge>
+    <edge source="A101" target="A103">
+      <data key="d0">1.0</data>
+      <data key="d1">1.0</data>
+      <data key="d2">2.0</data>
+      <data key="d3">True</data>
+    </edge>
+    <edge source="A101" target="A106">
+      <data key="d0">1.0</data>
+      <data key="d1">1.0</data>
+      <data key="d2">3.0</data>
+      <data key="d3">True</data>
+    </edge>
+    <edge source="A101" target="A109">
+      <data key="d0">1.0</data>
+      <data key="d1">1.0</data>
+      <data key="d2">4.0</data>
+      <data key="d3">True</data>
+    </edge>
+    <edge source="A102" target="A103">
+      <data key="d0">1.0</data>
+      <data key="d1">1.0</data>
+      <data key="d2">1.0</data>
+      <data key="d3">True</data>
+    </edge>
+    <edge source="A102" target="A106">
+      <data key="d0">1.0</data>
+      <data key="d1">1.0</data>
+      <data key="d2">2.0</data>
+      <data key="d3">True</data>
+    </edge>
+    <edge source="A102" target="A109">
+      <data key="d0">1.0</data>
+      <data key="d1">1.0</data>
+      <data key="d2">3.0</data>
+      <data key="d3">True</data>
+    </edge>
+    <edge source="A103" target="A106">
+      <data key="d0">1.0</data>
+      <data key="d1">1.0</data>
+      <data key="d2">1.0</data>
+      <data key="d3">True</data>
+    </edge>
+    <edge source="A103" target="A109">
+      <data key="d0">1.0</data>
+      <data key="d1">1.0</data>
+      <data key="d2">2.0</data>
+      <data key="d3">True</data>
+    </edge>
+    <edge source="A106" target="A109">
+      <data key="d0">1.0</data>
+      <data key="d1">1.0</data>
+      <data key="d2">1.0</data>
+      <data key="d3">True</data>
+    </edge>
+  </graph>
+</graphml>

@@ -1,0 +1,246 @@
+{
+  "task": "account_bot_classification",
+  "distinct_from": "coordination_detection",
+  "label_mapping": {
+    "Genuine": 0,
+    "Bot": 1
+  },
+  "feature_names": [
+    "total_posts",
+    "posts_with_urls",
+    "unique_texts",
+    "duplicate_text_posts",
+    "average_text_length",
+    "average_word_count",
+    "average_time_between_posts_minutes",
+    "url_post_ratio",
+    "duplicate_text_ratio",
+    "statuses_count",
+    "followers_count",
+    "friends_count",
+    "favourites_count",
+    "listed_count",
+    "default_profile",
+    "geo_enabled",
+    "verified",
+    "protected",
+    "description_length",
+    "friends_followers_ratio",
+    "tweet_data_available"
+  ],
+  "split_strategy": "stratified_by_label",
+  "n_train": 11422,
+  "n_validation": 2448,
+  "n_test": 2448,
+  "selected_model": "random_forest",
+  "selection_rule": "highest_validation_f1_then_accuracy",
+  "validation_results": {
+    "logistic_regression": {
+      "split": "validation",
+      "n_samples": 2448,
+      "accuracy": 0.8823529411764706,
+      "precision": 0.9584751531654186,
+      "recall": 0.8611620795107033,
+      "f1_score": 0.9072164948453608,
+      "confusion_matrix": [
+        [
+          752,
+          61
+        ],
+        [
+          227,
+          1408
+        ]
+      ],
+      "classification_report": {
+        "Genuine": {
+          "precision": 0.7681307456588355,
+          "recall": 0.9249692496924969,
+          "f1-score": 0.8392857142857143,
+          "support": 813.0
+        },
+        "Bot": {
+          "precision": 0.9584751531654186,
+          "recall": 0.8611620795107033,
+          "f1-score": 0.9072164948453608,
+          "support": 1635.0
+        },
+        "accuracy": 0.8823529411764706,
+        "macro avg": {
+          "precision": 0.8633029494121272,
+          "recall": 0.8930656646016002,
+          "f1-score": 0.8732511045655376,
+          "support": 2448.0
+        },
+        "weighted avg": {
+          "precision": 0.8952602825351685,
+          "recall": 0.8823529411764706,
+          "f1-score": 0.8846561498310663,
+          "support": 2448.0
+        }
+      },
+      "roc_auc": 0.9668972469541209
+    },
+    "decision_tree": {
+      "split": "validation",
+      "n_samples": 2448,
+      "accuracy": 0.9681372549019608,
+      "precision": 0.9726775956284153,
+      "recall": 0.9798165137614679,
+      "f1_score": 0.9762340036563071,
+      "confusion_matrix": [
+        [
+          768,
+          45
+        ],
+        [
+          33,
+          1602
+        ]
+      ],
+      "classification_report": {
+        "Genuine": {
+          "precision": 0.9588014981273408,
+          "recall": 0.9446494464944649,
+          "f1-score": 0.9516728624535316,
+          "support": 813.0
+        },
+        "Bot": {
+          "precision": 0.9726775956284153,
+          "recall": 0.9798165137614679,
+          "f1-score": 0.9762340036563071,
+          "support": 1635.0
+        },
+        "accuracy": 0.9681372549019608,
+        "macro avg": {
+          "precision": 0.965739546877878,
+          "recall": 0.9622329801279664,
+          "f1-score": 0.9639534330549193,
+          "support": 2448.0
+        },
+        "weighted avg": {
+          "precision": 0.9680692348161712,
+          "recall": 0.9681372549019608,
+          "f1-score": 0.9680770560264638,
+          "support": 2448.0
+        }
+      },
+      "roc_auc": 0.9622329801279664
+    },
+    "random_forest": {
+      "split": "validation",
+      "n_samples": 2448,
+      "accuracy": 0.985702614379085,
+      "precision": 0.995049504950495,
+      "recall": 0.9834862385321101,
+      "f1_score": 0.9892340818209782,
+      "confusion_matrix": [
+        [
+          805,
+          8
+        ],
+        [
+          27,
+          1608
+        ]
+      ],
+      "classification_report": {
+        "Genuine": {
+          "precision": 0.9675480769230769,
+          "recall": 0.990159901599016,
+          "f1-score": 0.9787234042553191,
+          "support": 813.0
+        },
+        "Bot": {
+          "precision": 0.995049504950495,
+          "recall": 0.9834862385321101,
+          "f1-score": 0.9892340818209782,
+          "support": 1635.0
+        },
+        "accuracy": 0.985702614379085,
+        "macro avg": {
+          "precision": 0.981298790936786,
+          "recall": 0.9868230700655631,
+          "f1-score": 0.9839787430381486,
+          "support": 2448.0
+        },
+        "weighted avg": {
+          "precision": 0.9859160650051146,
+          "recall": 0.985702614379085,
+          "f1-score": 0.9857434033647361,
+          "support": 2448.0
+        }
+      },
+      "roc_auc": 0.996922336195839
+    }
+  },
+  "test_results_selected_model": {
+    "split": "test",
+    "n_samples": 2448,
+    "accuracy": 0.9852941176470589,
+    "precision": 0.9962732919254659,
+    "recall": 0.981640146878825,
+    "f1_score": 0.9889025893958077,
+    "confusion_matrix": [
+      [
+        808,
+        6
+      ],
+      [
+        30,
+        1604
+      ]
+    ],
+    "classification_report": {
+      "Genuine": {
+        "precision": 0.964200477326969,
+        "recall": 0.9926289926289926,
+        "f1-score": 0.9782082324455206,
+        "support": 814.0
+      },
+      "Bot": {
+        "precision": 0.9962732919254659,
+        "recall": 0.981640146878825,
+        "f1-score": 0.9889025893958077,
+        "support": 1634.0
+      },
+      "accuracy": 0.9852941176470589,
+      "macro avg": {
+        "precision": 0.9802368846262175,
+        "recall": 0.9871345697539088,
+        "f1-score": 0.9835554109206641,
+        "support": 2448.0
+      },
+      "weighted avg": {
+        "precision": 0.9856085570058677,
+        "recall": 0.9852941176470589,
+        "f1-score": 0.9853465409654425,
+        "support": 2448.0
+      }
+    },
+    "roc_auc": 0.9984925673420166
+  },
+  "dataset_provenance": {
+    "n_accounts": 16318,
+    "source_datasets": [
+      "cresci-2015",
+      "cresci-2017"
+    ],
+    "source_groups": [
+      "e13",
+      "fsf",
+      "genuine_accounts",
+      "int",
+      "social_spambots_1",
+      "social_spambots_2",
+      "social_spambots_3",
+      "tfp",
+      "traditional_spambots_1",
+      "traditional_spambots_2",
+      "traditional_spambots_3",
+      "traditional_spambots_4",
+      "twt"
+    ]
+  },
+  "evaluated_at": "2026-10-23T18:20:48.554333+00:00"
+}
