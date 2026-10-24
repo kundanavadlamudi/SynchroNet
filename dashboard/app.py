@@ -1347,12 +1347,81 @@ def _attribution_figure(frame: pd.DataFrame, title: str) -> go.Figure | None:
 # ---------------------------------------------------------------------------
 # Load pipeline artifacts
 # ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# Dataset selection
+# ---------------------------------------------------------------------------
+_CRESCI_POSTS_FILE = (
+    _PROJECT_ROOT
+    / "data"
+    / "processed"
+    / "cresci_posts_multisource_cleaned.csv"
+)
+
+_CRESCI_REPORT_DIR = _PROJECT_ROOT / "results" / "reports"
+
+with st.sidebar:
+    st.markdown(
+        '<div class="nx-side-label">Dataset selection</div>',
+        unsafe_allow_html=True,
+    )
+
+    _dataset_choice = st.radio(
+        "Choose dataset",
+        options=["Demo Dataset", "Cresci Research Dataset"],
+        index=0,
+        key="nx_dataset_choice",
+        help="Switch between the synthetic demonstration data and the Cresci research sample.",
+    )
+
+_use_cresci = _dataset_choice == "Cresci Research Dataset"
+
+# ---------------------------------------------------------------------------
+# Load pipeline artifacts
+# ---------------------------------------------------------------------------
 with st.spinner("Loading NexTrace pipeline outputs and model metadata…"):
-    _posts_df, _posts_err = _load_csv(str(CLEANED_POSTS_FILE), "Cleaned posts")
-    _coord_df, _coord_err = _load_csv(str(COORDINATION_RESULTS_FILE), "Coordination results")
-    _risk_df, _risk_err = _load_csv(str(RISK_RESULTS_FILE), "Risk results")
-    _camp_df, _camp_err = _load_csv(str(CAMPAIGN_RESULTS_FILE), "Campaign results")
-    _behavior_df, _behavior_err = _load_csv(str(ACCOUNT_BEHAVIOR_FILE), "Account behaviour results")
+    if _use_cresci:
+        _posts_df, _posts_err = _load_csv(
+            str(_CRESCI_POSTS_FILE), "Cresci research posts"
+        )
+
+        _coord_df, _coord_err = _load_csv(
+            str(_CRESCI_REPORT_DIR / "cresci_coordination_results.csv"),
+            "Cresci coordination results",
+        )
+
+        _risk_df, _risk_err = _load_csv(
+            str(_CRESCI_REPORT_DIR / "cresci_account_analysis.csv"),
+            "Cresci account analysis",
+        )
+
+        _camp_df, _camp_err = _load_csv(
+            str(_CRESCI_REPORT_DIR / "cresci_campaign_results.csv"),
+            "Cresci campaign results",
+        )
+
+        _behavior_df, _behavior_err = _load_csv(
+            str(_CRESCI_REPORT_DIR / "cresci_network_metrics.csv"),
+            "Cresci network metrics",
+        )
+
+    else:
+        _posts_df, _posts_err = _load_csv(
+            str(CLEANED_POSTS_FILE), "Cleaned posts"
+        )
+        _coord_df, _coord_err = _load_csv(
+            str(COORDINATION_RESULTS_FILE), "Coordination results"
+        )
+        _risk_df, _risk_err = _load_csv(
+            str(RISK_RESULTS_FILE), "Risk results"
+        )
+        _camp_df, _camp_err = _load_csv(
+            str(CAMPAIGN_RESULTS_FILE), "Campaign results"
+        )
+        _behavior_df, _behavior_err = _load_csv(
+            str(ACCOUNT_BEHAVIOR_FILE), "Account behaviour results"
+        )
+
     _comparison_df, _comparison_err = _load_csv(
         str(ML_MODEL_COMPARISON_FILE), "Model comparison report"
     )
@@ -1370,11 +1439,13 @@ with st.spinner("Loading NexTrace pipeline outputs and model metadata…"):
 _metadata = _metadata if isinstance(_metadata, dict) else {}
 _test_metrics = _metadata.get("test_metrics", {}) if isinstance(_metadata, dict) else {}
 _run_meta = _run_meta if isinstance(_run_meta, dict) else {}
-_demo_mode = (
+
+_demo_mode = not _use_cresci and (
     _is_demo_dataset(_posts_df)
     or _run_meta.get("is_synthetic", False)
     or _run_meta.get("source") == "demo"
 )
+
 
 # ---------------------------------------------------------------------------
 # Sidebar
@@ -1807,23 +1878,23 @@ st.markdown('<div class="nx-divider"></div>', unsafe_allow_html=True)
 # ---------------------------------------------------------------------------
 # Tabs
 # ---------------------------------------------------------------------------
-tab_posts, tab_coord, tab_risk, tab_campaign, tab_bot = st.tabs(
+tab_posts, tab_coord, tab_risk, tab_campaign, tab_bot, tab_cresci = st.tabs(
     [
         "Posts",
         "Coordination Detection",
         "Risk Scores",
         "Campaign Analysis",
         "Bot Classifier",
+        "Cresci Analysis",
     ]
 )
-
 # ===========================================================================
 # TAB 1 — POSTS
 # ===========================================================================
 with tab_posts:
     _section_header(
         "Social media posts",
-        _source_line(CLEANED_POSTS_FILE)
+        _source_line(_CRESCI_POSTS_FILE if _use_cresci else CLEANED_POSTS_FILE)
         + " · Phase 1 input after validation and normalisation",
     )
 
@@ -3428,3 +3499,285 @@ st.markdown(
     f"</div>",
     unsafe_allow_html=True,
 )
+# ===========================================================================
+# TAB 6 — CRESCI DATASET ANALYSIS
+# ===========================================================================
+
+with tab_cresci:
+    st.markdown(
+        """
+        <div style="padding: 10px 0 20px 0;">
+            <h1 style="color: #22d3ee;">Cresci Dataset Analysis</h1>
+            <p style="color: #94a3b8;">
+                Research dataset analysis of account relationships, similar posts,
+                candidate coordination clusters, and network structure.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    cresci_report_dir = _PROJECT_ROOT / "results" / "reports"
+    cresci_graph_path = (
+        _PROJECT_ROOT / "results" / "graphs" / "cresci_coordination_graph.png"
+    )
+
+    cresci_files = {
+        "Semantic Similarity": "cresci_semantic_similarity_results.csv",
+        "Coordination Results": "cresci_coordination_results.csv",
+        "Account Analysis": "cresci_account_analysis.csv",
+        "Campaign Results": "cresci_campaign_results.csv",
+        "Campaign Members": "cresci_campaign_members.csv",
+        "Network Metrics": "cresci_network_metrics.csv",
+        "Campaign Validation": "cresci_campaign_validation.csv",
+    }
+
+    @st.cache_data(show_spinner=False)
+    def _load_cresci_report(path_string):
+        path = Path(path_string)
+        if not path.exists():
+            return pd.DataFrame()
+        return pd.read_csv(path, low_memory=False)
+
+    cresci_data = {}
+
+    for report_name, filename in cresci_files.items():
+        report_path = cresci_report_dir / filename
+        try:
+            cresci_data[report_name] = _load_cresci_report(str(report_path))
+        except Exception as exc:
+            cresci_data[report_name] = pd.DataFrame()
+            st.warning(
+                f"Could not load {filename}: {type(exc).__name__}: {exc}"
+            )
+
+    cresci_posts_path = (
+        _PROJECT_ROOT
+        / "data"
+        / "processed"
+        / "cresci_posts_multisource_cleaned.csv"
+    )
+
+    try:
+        cresci_posts = _load_cresci_report(str(cresci_posts_path))
+    except Exception as exc:
+        cresci_posts = pd.DataFrame()
+        st.warning(f"Could not load Cresci posts: {exc}")
+
+    cresci_coord = cresci_data["Coordination Results"]
+    cresci_accounts = cresci_data["Account Analysis"]
+    cresci_campaigns = cresci_data["Campaign Results"]
+    cresci_members = cresci_data["Campaign Members"]
+    cresci_network = cresci_data["Network Metrics"]
+    cresci_validation = cresci_data["Campaign Validation"]
+    cresci_similarity = cresci_data["Semantic Similarity"]
+
+    if cresci_posts.empty:
+        st.warning(
+            "The Cresci cleaned dataset was not found or is empty. "
+            "Check data/processed/cresci_posts_multisource_cleaned.csv."
+        )
+    else:
+        post_count = len(cresci_posts)
+        account_count = (
+            cresci_posts["account_id"].nunique()
+            if "account_id" in cresci_posts.columns
+            else 0
+        )
+        source_count = (
+            cresci_posts["source_group"].nunique()
+            if "source_group" in cresci_posts.columns
+            else 0
+        )
+
+        st.markdown("### Dataset Overview")
+
+        k1, k2, k3, k4 = st.columns(4)
+
+        k1.metric("Posts", f"{post_count:,}")
+        k2.metric("Accounts", f"{account_count:,}")
+        k3.metric("Source Groups", f"{source_count:,}")
+        k4.metric("Similarity Candidates", f"{len(cresci_similarity):,}")
+
+        st.caption(
+            "These counts describe the currently loaded Cresci sample, "
+            "not the complete original Cresci datasets."
+        )
+
+    st.markdown('<div class="nx-divider"></div>', unsafe_allow_html=True)
+
+    st.markdown("### Coordination Detection")
+
+    flagged_pairs = len(cresci_coord)
+
+    unique_edges = 0
+    if not cresci_coord.empty and {
+        "account_1",
+        "account_2",
+    }.issubset(cresci_coord.columns):
+        unique_edges = cresci_coord.apply(
+            lambda row: tuple(
+                sorted(
+                    [
+                        str(row["account_1"]),
+                        str(row["account_2"]),
+                    ]
+                )
+            ),
+            axis=1,
+        ).nunique()
+
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Flagged Post Pairs", f"{flagged_pairs:,}")
+    c2.metric("Unique Account Connections", f"{unique_edges:,}")
+    c3.metric("Candidate Campaigns", f"{len(cresci_campaigns):,}")
+
+    if not cresci_coord.empty:
+        display_coord = cresci_coord.copy()
+
+        sort_column = (
+            "coordination_score"
+            if "coordination_score" in display_coord.columns
+            else None
+        )
+
+        if sort_column:
+            display_coord[sort_column] = pd.to_numeric(
+                display_coord[sort_column], errors="coerce"
+            )
+            display_coord = display_coord.sort_values(
+                sort_column, ascending=False
+            )
+
+        st.dataframe(
+            display_coord,
+            use_container_width=True,
+            hide_index=True,
+        )
+    else:
+        st.info("No coordination results are available.")
+
+    st.markdown('<div class="nx-divider"></div>', unsafe_allow_html=True)
+
+    st.markdown("### Candidate Campaign Analysis")
+
+    if not cresci_campaigns.empty:
+        st.dataframe(
+            cresci_campaigns,
+            use_container_width=True,
+            hide_index=True,
+        )
+    else:
+        st.info("No campaign results are available.")
+
+    st.markdown("### Campaign Validation")
+
+    if not cresci_validation.empty:
+        st.dataframe(
+            cresci_validation,
+            use_container_width=True,
+            hide_index=True,
+        )
+
+        if "validation_status" in cresci_validation.columns:
+            st.caption(
+                "Validation statuses are evidence-review indicators. "
+                "They do not establish that a campaign conducted disinformation."
+            )
+    else:
+        st.info("No campaign validation report is available.")
+
+    st.markdown('<div class="nx-divider"></div>', unsafe_allow_html=True)
+
+    st.markdown("### Account Analysis")
+
+    if not cresci_accounts.empty:
+        if "flagged_pair_count" in cresci_accounts.columns:
+            account_display = cresci_accounts.sort_values(
+                "flagged_pair_count", ascending=False
+            )
+        else:
+            account_display = cresci_accounts
+
+        st.dataframe(
+            account_display,
+            use_container_width=True,
+            hide_index=True,
+        )
+    else:
+        st.info("No account analysis report is available.")
+
+    st.markdown("### Network Metrics")
+
+    if not cresci_network.empty:
+        if "degree_centrality" in cresci_network.columns:
+            network_display = cresci_network.sort_values(
+                "degree_centrality", ascending=False
+            )
+        else:
+            network_display = cresci_network
+
+        st.dataframe(
+            network_display,
+            use_container_width=True,
+            hide_index=True,
+        )
+    else:
+        st.info("No network metrics report is available.")
+
+    st.markdown('<div class="nx-divider"></div>', unsafe_allow_html=True)
+
+    st.markdown("### Coordination Network Graph")
+
+    if cresci_graph_path.exists():
+        st.image(
+            str(cresci_graph_path),
+            caption=(
+                "Cresci coordination network. Connections represent candidate "
+                "coordination evidence, not proof of malicious activity."
+            ),
+            use_container_width=True,
+        )
+    else:
+        st.info(
+            "Network graph image not found. Check "
+            "results/graphs/cresci_coordination_graph.png."
+        )
+
+    st.markdown("### Export Reports")
+
+    for report_name, filename in cresci_files.items():
+        report_path = cresci_report_dir / filename
+
+        if report_path.exists():
+            try:
+                report_bytes = report_path.read_bytes()
+
+                st.download_button(
+                    label=f"Download {report_name} CSV",
+                    data=report_bytes,
+                    file_name=filename,
+                    mime="text/csv",
+                    key=f"cresci_download_{filename}",
+                )
+            except OSError as exc:
+                st.warning(f"Could not prepare {filename}: {exc}")
+
+    if cresci_posts_path.exists():
+        try:
+            st.download_button(
+                label="Download Cleaned Cresci Posts CSV",
+                data=cresci_posts_path.read_bytes(),
+                file_name="cresci_posts_multisource_cleaned.csv",
+                mime="text/csv",
+                key="cresci_download_cleaned_posts",
+            )
+        except OSError as exc:
+            st.warning(f"Could not prepare cleaned Cresci posts: {exc}")
+
+    st.info(
+        "**Research disclaimer:** Similarity, coordination scores, graph connections, "
+        "and classifier outputs are investigative signals. They are not proof of "
+        "coordinated disinformation or the intent of any account. Human review "
+        "and independent evidence are required."
+    )
