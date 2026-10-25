@@ -1391,8 +1391,8 @@ with st.spinner("Loading NexTrace pipeline outputs and model metadata…"):
         )
 
         _risk_df, _risk_err = _load_csv(
-            str(_CRESCI_REPORT_DIR / "cresci_account_analysis.csv"),
-            "Cresci account analysis",
+            str(_CRESCI_REPORT_DIR / "cresci_explainable_risk_results.csv"),
+            "Cresci risk results",
         )
 
         _camp_df, _camp_err = _load_csv(
@@ -2405,7 +2405,11 @@ with tab_coord:
 with tab_risk:
     _section_header(
         "Investigation risk scores",
-        _source_line(RISK_RESULTS_FILE)
+        _source_line(
+            _CRESCI_REPORT_DIR / "cresci_explainable_risk_results.csv"
+            if _use_cresci
+            else RISK_RESULTS_FILE
+        )
         + " · Explainable prioritisation of flagged pairs",
     )
     st.caption(
